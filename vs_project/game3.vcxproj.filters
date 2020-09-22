@@ -1,0 +1,3296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ColorProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ColorTextureProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\data_path.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DrawLines.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\GL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gl_compile_program.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LitColorTextureProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Load.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\load_opus.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\load_save_png.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\load_wav.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Mode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\PathFont-font.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\PathFont.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\PlayMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\show-meshes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\show-scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ShowMeshesMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ShowMeshesProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ShowSceneMode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ShowSceneProgram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nest-mess\glm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nest-mess\glm\detail\glm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\glcorearb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ColorProgram.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ColorTextureProgram.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\data_path.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\DrawLines.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\GL.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gl_compile_program.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gl_errors.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LitColorTextureProgram.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Load.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\load_opus.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\load_save_png.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\load_wav.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Mesh.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Mode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\PathFont.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\PlayMode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\read_write_chunk.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Scene.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ShowMeshesMode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ShowMeshesProgram.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ShowSceneMode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ShowSceneProgram.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sound.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\autohint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\begin_code.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\cffotypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\cfftypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\close_code.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\exponential.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\freetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ft2build.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftadvanc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftbbox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftbdf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftbitmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftbzip2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftcache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftcalc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftchapters.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftcid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftcolor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftdebug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftdriver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftdrv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\fterrdef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\fterrors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftfntfmt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftgasp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftgloadr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftglyph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftgxval.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftgzip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\fthash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftheader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftimage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftincrem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftlcdfil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftlist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftlzw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftmac.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftmemory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftmm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftmodapi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftmoderr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftmodule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftobjs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftoption.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftotval.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftoutln.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftparams.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftpfr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftpsprop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftrender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftrfork.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftserv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftsizes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftsnames.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftstdlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftstream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftstroke.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftsynth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftsystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\fttrace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\fttrigon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\fttypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftvalid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ftwinfnt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\geometric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-aat-layout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-aat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-blob.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-deprecated.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-face.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-ft.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-ot-color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-ot-deprecated.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-ot-font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-ot-layout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-ot-math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-ot-meta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-ot-metrics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-ot-name.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-ot-shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-ot-var.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-ot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-set.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-shape-plan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-unicode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb-version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\integer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\neon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ogg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\opus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\opusenc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\opusfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\opus_defines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\opus_multistream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\opus_projection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\opus_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\os_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\packing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\png.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\pngconf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\pnglibconf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\psaux.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\pshints.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_assert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_atomic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_audio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_bits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_blendmode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_clipboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_config_android.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_config_iphoneos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_config_macosx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_config_minimal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_config_os2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_config_pandora.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_config_psp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_config_windows.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_config_winrt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_config_wiz.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_copying.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_cpuinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_egl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_endian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_error.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_events.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_filesystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_gamecontroller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_gesture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_haptic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_hints.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_joystick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_keyboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_keycode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_loadso.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_messagebox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_metal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_mouse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_mutex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_name.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_opengl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_opengles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_opengles2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_opengles2_gl2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_opengles2_gl2ext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_opengles2_gl2platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_opengles2_khrplatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_opengl_glext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_pixels.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_power.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_quit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_rect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_render.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_revision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_rwops.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_scancode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_sensor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_stdinc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_surface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_system.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_syswm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test_assert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test_common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test_compare.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test_crc32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test_font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test_fuzzer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test_harness.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test_images.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test_log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test_md5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test_memory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_test_random.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_touch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_video.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\SDL_vulkan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\sfnt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svbdf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svcfftl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svcid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svfntfmt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svgldict.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svgxval.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svkern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svmetric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svmm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svotval.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svpfr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svpostnm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svprop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svpscmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svpsinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svsfnt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svttcmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svtteng.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svttglyf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\svwinfnt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\t1tables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\t1types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\trigonometric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ttnameid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\tttables.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\tttags.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\tttypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_relational.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\wofftypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\zconf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\zlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\associated_min_max.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\bit.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\bitfield.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\closest_point.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\color_encoding.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\color_space.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\color_space_YCoCg.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\compatibility.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\component_wise.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\compute_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\compute_vector_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\constants.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\dual_quaternion.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\easing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\epsilon.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\euler_angles.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\exponential.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ext.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\extend.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\extended_min_max.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\exterior_product.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\fast_exponential.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\fast_square_root.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\fast_trigonometry.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\functions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\fwd.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\geometric.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\gradient_paint.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\handed_coordinate_space.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\hash.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\integer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\intersect.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\io.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\log_base.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\mat2x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\mat2x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\mat2x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\mat3x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\mat3x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\mat3x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\mat4x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\mat4x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\mat4x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_access.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_clip_space.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_cross_product.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_decompose.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double2x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double2x2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double2x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double2x3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double2x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double2x4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double3x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double3x2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double3x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double3x3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double3x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double3x4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double4x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double4x2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double4x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double4x3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double4x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_double4x4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_factorisation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float2x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float2x2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float2x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float2x3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float2x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float2x4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float3x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float3x2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float3x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float3x3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float3x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float3x4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float4x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float4x2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float4x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float4x3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float4x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_float4x4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int2x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int2x2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int2x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int2x3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int2x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int2x4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int3x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int3x2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int3x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int3x3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int3x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int3x4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int4x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int4x2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int4x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int4x3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int4x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_int4x4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_integer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_interpolation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_inverse.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_major_storage.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_operation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_projection.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_query.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_transform.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_transform_2d.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint2x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint2x2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint2x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint2x3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint2x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint2x4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint3x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint3x2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint3x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint3x3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint3x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint3x4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint4x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint4x2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint4x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint4x3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint4x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\matrix_uint4x4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\mixed_product.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\noise.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\norm.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\normal.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\normalize_dot.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\number_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\optimum_pow.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\orthonormalize.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\packing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\perpendicular.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\polar_coordinates.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\projection.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\qualifier.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\quaternion.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\quaternion_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\quaternion_double.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\quaternion_double_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\quaternion_exponential.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\quaternion_float.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\quaternion_float_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\quaternion_geometric.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\quaternion_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\quaternion_transform.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\quaternion_trigonometric.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\random.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\range.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\raw_data.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\reciprocal.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\rotate_normalized_axis.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\rotate_vector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\round.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\scalar_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\scalar_constants.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\scalar_integer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\scalar_int_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\scalar_multiplication.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\scalar_packing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\scalar_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\scalar_uint_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\scalar_ulp.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\setup.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\spline.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\std_based_type.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\string_cast.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\texture.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\transform.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\transform2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\trigonometric.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_aligned.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_float.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_half.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_mat2x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_mat2x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_mat2x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_mat3x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_mat3x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_mat3x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_mat4x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_mat4x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_mat4x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_ptr.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_quat.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_trait.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_vec1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_vec2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_vec3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\type_vec4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\ulp.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vec1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vec2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vec3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vec4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_angle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_bool1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_bool1_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_bool2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_bool2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_bool3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_bool3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_bool4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_bool4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_double1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_double1_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_double2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_double2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_double3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_double3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_double4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_double4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_float1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_float1_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_float2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_float2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_float3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_float3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_float4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_float4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_int1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_int1_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_int2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_int2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_int3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_int3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_int4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_int4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_integer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_packing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_query.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_uint1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_uint1_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_uint2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_uint2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_uint3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_uint3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_uint4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_uint4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vector_ulp.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\vec_swizzle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\wrap.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\_features.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\_fixes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\_noise.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\_swizzle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\_swizzle_func.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\_vectorize.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\exponential.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\fwd.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\geometric.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\glm.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\integer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\mat2x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\mat2x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\mat2x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\mat3x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\mat3x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\mat3x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\mat4x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\mat4x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\mat4x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\matrix.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\packing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\trigonometric.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\vec2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\vec3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\vec4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\vector_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\compute_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\compute_vector_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\qualifier.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\setup.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_float.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_half.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_mat2x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_mat2x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_mat2x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_mat3x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_mat3x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_mat3x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_mat4x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_mat4x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_mat4x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_quat.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_vec1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_vec2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_vec3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\type_vec4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\_features.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\_fixes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\_noise.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\_swizzle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\_swizzle_func.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\detail\_vectorize.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_clip_space.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double2x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double2x2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double2x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double2x3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double2x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double2x4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double3x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double3x2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double3x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double3x3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double3x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double3x4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double4x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double4x2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double4x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double4x3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double4x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_double4x4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float2x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float2x2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float2x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float2x3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float2x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float2x4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float3x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float3x2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float3x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float3x3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float3x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float3x4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float4x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float4x2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float4x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float4x3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float4x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_float4x4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int2x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int2x2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int2x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int2x3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int2x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int2x4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int3x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int3x2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int3x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int3x3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int3x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int3x4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int4x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int4x2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int4x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int4x3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int4x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_int4x4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_projection.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_transform.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint2x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint2x2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint2x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint2x3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint2x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint2x4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint3x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint3x2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint3x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint3x3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint3x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint3x4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint4x2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint4x2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint4x3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint4x3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint4x4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\matrix_uint4x4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\quaternion_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\quaternion_double.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\quaternion_double_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\quaternion_exponential.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\quaternion_float.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\quaternion_float_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\quaternion_geometric.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\quaternion_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\quaternion_transform.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\quaternion_trigonometric.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\scalar_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\scalar_constants.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\scalar_integer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\scalar_int_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\scalar_packing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\scalar_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\scalar_uint_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\scalar_ulp.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_bool1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_bool1_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_bool2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_bool2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_bool3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_bool3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_bool4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_bool4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_double1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_double1_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_double2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_double2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_double3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_double3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_double4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_double4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_float1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_float1_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_float2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_float2_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_float3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_float3_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_float4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_float4_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_int1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_int1_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_int2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_int2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_int3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_int3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_int4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_int4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_integer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_packing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_uint1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_uint1_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_uint2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_uint2_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_uint3.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_uint3_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_uint4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_uint4_sized.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\ext\vector_ulp.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\bitfield.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\color_space.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\constants.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\epsilon.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\integer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\matrix_access.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\matrix_integer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\matrix_inverse.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\matrix_transform.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\noise.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\packing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\quaternion.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\random.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\reciprocal.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\round.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\type_aligned.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\type_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\type_ptr.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\ulp.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtc\vec1.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\associated_min_max.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\bit.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\closest_point.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\color_encoding.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\color_space.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\color_space_YCoCg.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\compatibility.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\component_wise.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\dual_quaternion.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\easing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\euler_angles.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\extend.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\extended_min_max.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\exterior_product.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\fast_exponential.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\fast_square_root.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\fast_trigonometry.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\functions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\gradient_paint.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\handed_coordinate_space.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\hash.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\integer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\intersect.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\io.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\log_base.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\matrix_cross_product.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\matrix_decompose.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\matrix_factorisation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\matrix_interpolation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\matrix_major_storage.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\matrix_operation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\matrix_query.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\matrix_transform_2d.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\mixed_product.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\norm.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\normal.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\normalize_dot.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\number_precision.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\optimum_pow.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\orthonormalize.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\perpendicular.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\polar_coordinates.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\projection.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\quaternion.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\range.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\raw_data.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\rotate_normalized_axis.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\rotate_vector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\scalar_multiplication.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\scalar_relational.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\spline.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\std_based_type.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\string_cast.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\texture.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\transform.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\transform2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\type_aligned.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\type_trait.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\vector_angle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\vector_query.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\vec_swizzle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\gtx\wrap.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\simd\common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\simd\exponential.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\simd\geometric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\simd\integer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\simd\matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\simd\neon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\simd\packing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\simd\platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\simd\trigonometric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nest-mess\glm\simd\vector_relational.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\nest-mess\associated_min_max.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\bit.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\bitfield.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\closest_point.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\color_encoding.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\color_space.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\color_space_YCoCg.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\common.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\compatibility.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\component_wise.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\constants.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\dual_quaternion.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\easing.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\epsilon.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\euler_angles.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\extend.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\extended_min_max.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\exterior_product.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\fast_exponential.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\fast_square_root.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\fast_trigonometry.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\float_notmalize.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\functions.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_common.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_common_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_exponential.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_exponential_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_geometric.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_geometric_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_integer.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_integer_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_matrix.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_matrix_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_packing.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_packing_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_trigonometric.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_trigonometric_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_vector_relational.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\func_vector_relational_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\gradient_paint.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\handed_coordinate_space.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\hash.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\integer.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\intersect.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\io.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\log_base.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_access.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_clip_space.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_common.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_cross_product.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_decompose.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_factorisation.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_interpolation.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_inverse.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_major_storage.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_operation.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_projection.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_query.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_relational.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_transform.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\matrix_transform_2d.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\mixed_product.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\noise.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\norm.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\normal.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\normalize_dot.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\number_precision.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\optimum_pow.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\orthonormalize.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\packing.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\perpendicular.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\polar_coordinates.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\projection.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\quaternion.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\quaternion_common.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\quaternion_common_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\quaternion_exponential.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\quaternion_geometric.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\quaternion_relational.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\quaternion_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\quaternion_transform.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\quaternion_trigonometric.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\random.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\raw_data.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\reciprocal.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\rotate_normalized_axis.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\rotate_vector.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\round.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\scalar_common.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\scalar_constants.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\scalar_integer.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\scalar_packing.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\scalar_relational.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\scalar_ulp.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\spline.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\std_based_type.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\string_cast.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\texture.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\transform.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\transform2.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_aligned.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_half.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_mat2x2.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_mat2x3.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_mat2x4.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_mat3x2.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_mat3x3.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_mat3x4.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_mat4x2.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_mat4x3.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_mat4x4.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_mat4x4_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_precision.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_ptr.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_quat.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_quat_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_trait.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_vec1.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_vec2.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_vec3.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_vec4.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\type_vec4_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\ulp.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\vector_angle.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\vector_common.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\vector_integer.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\vector_packing.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\vector_query.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\vector_relational.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\vector_ulp.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\wrap.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_common.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_common_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_exponential.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_exponential_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_geometric.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_geometric_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_integer.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_integer_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_matrix.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_matrix_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_packing.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_packing_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_trigonometric.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_trigonometric_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_vector_relational.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\func_vector_relational_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_half.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_mat2x2.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_mat2x3.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_mat2x4.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_mat3x2.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_mat3x3.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_mat3x4.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_mat4x2.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_mat4x3.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_mat4x4.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_mat4x4_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_quat.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_quat_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_vec1.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_vec2.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_vec3.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_vec4.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\detail\type_vec4_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\matrix_clip_space.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\matrix_common.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\matrix_projection.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\matrix_relational.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\matrix_transform.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\quaternion_common.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\quaternion_common_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\quaternion_exponential.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\quaternion_geometric.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\quaternion_relational.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\quaternion_transform.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\quaternion_trigonometric.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\scalar_common.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\scalar_constants.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\scalar_integer.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\scalar_packing.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\scalar_relational.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\scalar_ulp.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\vector_common.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\vector_integer.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\vector_packing.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\vector_relational.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\ext\vector_ulp.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\bitfield.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\color_space.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\constants.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\epsilon.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\integer.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\matrix_access.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\matrix_inverse.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\matrix_transform.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\noise.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\packing.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\quaternion.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\quaternion_simd.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\random.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\reciprocal.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\round.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\type_precision.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\type_ptr.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtc\ulp.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\associated_min_max.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\bit.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\closest_point.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\color_encoding.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\color_space.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\color_space_YCoCg.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\common.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\compatibility.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\component_wise.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\dual_quaternion.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\easing.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\euler_angles.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\extend.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\extended_min_max.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\exterior_product.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\fast_exponential.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\fast_square_root.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\fast_trigonometry.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\float_notmalize.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\functions.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\gradient_paint.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\handed_coordinate_space.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\hash.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\integer.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\intersect.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\io.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\log_base.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\matrix_cross_product.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\matrix_decompose.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\matrix_factorisation.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\matrix_interpolation.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\matrix_major_storage.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\matrix_operation.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\matrix_query.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\matrix_transform_2d.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\mixed_product.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\norm.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\normal.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\normalize_dot.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\number_precision.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\optimum_pow.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\orthonormalize.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\perpendicular.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\polar_coordinates.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\projection.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\quaternion.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\raw_data.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\rotate_normalized_axis.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\rotate_vector.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\scalar_relational.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\spline.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\std_based_type.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\string_cast.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\texture.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\transform.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\transform2.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\type_aligned.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\type_trait.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\vector_angle.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\vector_query.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\nest-mess\glm\gtx\wrap.inl">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
