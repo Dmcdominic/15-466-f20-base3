@@ -165,7 +165,9 @@ int main(int argc, char **argv) {
 			//lag to avoid spiral of death:
 			elapsed = std::min(0.1f, elapsed);
 
-			Mode::current->update(elapsed);
+			bool quit = false;
+			Mode::current->update(elapsed, &quit);
+			if (quit) break;
 			if (!Mode::current) break;
 		}
 
