@@ -191,7 +191,7 @@ void PlayMode::update(float elapsed, bool *quit) {
 
 	if (prefab_cpy_test == nullptr) {
 		prefab_cpy_test = cpyPrefab(SHAPE::CUBE, COLOR::BLUE);
-		//prefab_cpy_test->transform->position = glm::vec3(1.5f, 1.5f, 1.5f);
+		prefab_cpy_test->transform->position = glm::vec3(1.5f, 1.5f, 1.5f);
 	}
 
 

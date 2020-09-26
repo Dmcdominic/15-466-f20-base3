@@ -47,14 +47,16 @@ struct PlayMode : Mode {
 	};
 
 	class ShapeDef {
-		public: ShapeDef(SHAPE s, std::string n, std::vector<int> t_o) : shape(s), name(n), tone_offsets(t_o) {}
+		public:
+		ShapeDef(SHAPE s, std::string n, std::vector<int> t_o) : shape(s), name(n), tone_offsets(t_o) {}
 		SHAPE shape;
 		std::string name;
 		std::vector<int> tone_offsets = { 0 }; // Pattern of tones in the pentatonic scale to play, relative to the shape's row note
 	};
 
 	class ColorDef {
-		public: ColorDef(COLOR c, std::string n, std::vector<float> i) : color(c), name(n), intervals(i) {}
+		public:
+		ColorDef(COLOR c, std::string n, std::vector<float> i) : color(c), name(n), intervals(i) {}
 		COLOR color;
 		std::string name;
 		std::vector<float> intervals = { 1.0f }; // Pattern of seconds between each note
@@ -94,17 +96,30 @@ struct PlayMode : Mode {
 		prefabs[int(s)][int(c)] = drawable;
 	}
 
+	// Note blocks
+	class NoteBlock {
+		public:
+		ShapeDef *shapeDef;
+		ColorDef *colorDef;
+		Scene::Transform *transform;
+		glm::uvec2 gridPos = { 0, 0 }; // position in the grid. 0 <= x, y < 5
+	};
+
+	std::vector<NoteBlock> noteBlocks = std::vector<NoteBlock>();
+
 	// Drawable duplication based on Alyssa's game2 code, with permission:
 	// https://github.com/lassyla/game2/blob/master/FishMode.cpp?fbclid=IwAR2gXxc_Omje47Xa7JmJPRN6Nh2jGSEnMVn1Qw7uoSV0QwKu0ZwwAUu5528
 	Scene::Drawable* cpyPrefab(SHAPE s, COLOR c) {
-		// TODO
-		/*scene.transforms.emplace_back();
-		scene.drawables.emplace_back();
-		Scene::Transform *newTransform = &(scene.transforms.back());
-		Scene::Drawable *newDrawable = &(scene.drawables.back());
-		*newDrawable = Scene::Drawable(*(getPrefab(s, c)));
-		newDrawable->transform = newTransform;
-		return newDrawable;*/
+		NoteBlock nB;
+		nB.shapeDef = &(shapeDefs[int(s)]);
+		nB.colorDef = &(colorDefs[int(c)]);
+		nB.transform = new Scene::Transform();
+
+		scene.drawables.emplace_back(nB.transform);
+		Scene::Drawable &drawable = scene.drawables.back();
+		drawable.pipeline = getPrefab(s, c)->pipeline;
+		noteBlocks.emplace_back(nB);
+		return &drawable;
 	}
 
 
