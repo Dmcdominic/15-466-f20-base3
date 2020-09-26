@@ -1,6 +1,6 @@
-# (TODO: your game's title)
+# The Pentaton
 
-Author: (TODO: your name)
+Author: Dominic Calkosz
 
 Design: (TODO: In two sentences or fewer, describe what is new and interesting about your game.)
 
@@ -13,6 +13,7 @@ How To Play:
 (TODO: describe the controls and (if needed) goals/strategy.)
 
 Sources: (TODO: list a source URL for any assets you did not create yourself. Make sure you have a license for the asset.)
+Thanks to Alyssa Lee for her [drawable duplication code](https://github.com/lassyla/game2/blob/master/FishMode.cpp?fbclid=IwAR2gXxc_Omje47Xa7JmJPRN6Nh2jGSEnMVn1Qw7uoSV0QwKu0ZwwAUu5528).
 
 This game was built with [NEST](NEST.md).
 

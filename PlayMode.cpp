@@ -58,12 +58,39 @@ PlayMode::PlayMode() : scene(*pentaton_scene) {
 	upper_leg_base_rotation = upper_leg->rotation;
 	lower_leg_base_rotation = lower_leg->rotation;*/
 
-	// todo - get pointers to prefabs
+	// Get pointers to prefabs
+	for (auto &drawable : scene.drawables) {
+		for (ShapeDef shapeDef : shapeDefs) {
+			for (ColorDef colorDef : colorDefs) {
+				if (drawable.transform->name == shapeDef.name + colorDef.name) {
+					setPrefab(shapeDef.shape, colorDef.color, &drawable);
+				}
+			}
+		}
+		/*if (drawable.transform->name == "CubeRed") setPrefab(SHAPE::CUBE, COLOR::RED, &drawable);
+		if (drawable.transform->name == "CubeBlue") setPrefab(SHAPE::CUBE, COLOR::BLUE, &drawable);
+		if (drawable.transform->name == "SphereRed") setPrefab(SHAPE::SPHERE, COLOR::RED, &drawable);
+		if (drawable.transform->name == "SphereBlue") setPrefab(SHAPE::SPHERE, COLOR::BLUE, &drawable);
+		if (drawable.transform->name == "ConeRed") setPrefab(SHAPE::CONE, COLOR::RED, &drawable);
+		if (drawable.transform->name == "ConeBlue") setPrefab(SHAPE::CONE, COLOR::BLUE, &drawable);
+		if (drawable.transform->name == "TorusRed") setPrefab(SHAPE::TORUS, COLOR::RED, &drawable);
+		if (drawable.transform->name == "TorusBlue") setPrefab(SHAPE::TORUS, COLOR::BLUE, &drawable);*/
+	}
+	// Check if vectors are null
+	for (size_t i = 0; i < prefabs.size(); i++) {
+		for (size_t j = 0; j < prefabs[i].size(); j++) {
+			if (prefabs[i][j] == nullptr) {
+				std::cout << "prefab " << i << ", " << j << " not found" << std::endl;
+				throw std::runtime_error("prefab not found");
+			}
+		}
+	}
 
 	//get pointer to camera for convenience:
 	if (scene.cameras.size() != 1) throw std::runtime_error("Expecting scene to have exactly one camera, but it has " + std::to_string(scene.cameras.size()));
 	camera = &scene.cameras.front();
-	
+
+
 	//start music loop playing:
 	// (note: position will be over-ridden in update())
 	leg_tip_loop = Sound::loop_3D(*dusty_floor_sample, 1.0f, get_left_speaker_position(), 10.0f);
@@ -162,30 +189,14 @@ void PlayMode::update(float elapsed, bool *quit) {
 	);*/
 
 
+	if (prefab_cpy_test == nullptr) {
+		prefab_cpy_test = cpyPrefab(SHAPE::CUBE, COLOR::BLUE);
+		//prefab_cpy_test->transform->position = glm::vec3(1.5f, 1.5f, 1.5f);
+	}
+
+
 	//move sound to follow leg tip position:
 	leg_tip_loop->set_position(get_left_speaker_position(), 1.0f / 60.0f);
-
-	//move camera:
-	{
-
-		//combine inputs into a move:
-		constexpr float PlayerSpeed = 30.0f;
-		glm::vec2 move = glm::vec2(0.0f);
-		if (left.pressed && !right.pressed) move.x =-1.0f;
-		if (!left.pressed && right.pressed) move.x = 1.0f;
-		if (down.pressed && !up.pressed) move.y =-1.0f;
-		if (!down.pressed && up.pressed) move.y = 1.0f;
-
-		//make it so that moving diagonally doesn't go faster:
-		if (move != glm::vec2(0.0f)) move = glm::normalize(move) * PlayerSpeed * elapsed;
-
-		glm::mat4x3 frame = camera->transform->make_local_to_parent();
-		glm::vec3 right = frame[0];
-		//glm::vec3 up = frame[1];
-		glm::vec3 forward = -frame[2];
-
-		camera->transform->position += move.x * right + move.y * forward;
-	}
 
 	{ //update listener to camera position:
 		glm::mat4x3 frame = camera->transform->make_local_to_parent();

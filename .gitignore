@@ -8,3 +8,8 @@ dist/game.exe
 scenes/show-meshes*
 scenes/show-scene*
 *.blend[0-9]
+
+dist/ThePentaton.ilk
+dist/ThePentaton.pdb
+dist/ThePentaton
+dist/ThePentaton.exe
