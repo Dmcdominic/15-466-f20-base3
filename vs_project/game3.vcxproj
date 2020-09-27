@@ -1195,6 +1195,7 @@
     <None Include="..\..\nest-mess\vector_ulp.inl" />
     <None Include="..\..\nest-mess\wrap.inl" />
     <None Include="..\Jamfile" />
+    <None Include="..\README.md" />
     <None Include="..\scenes\Makefile.windows" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

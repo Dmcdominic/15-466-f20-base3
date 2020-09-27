@@ -3294,5 +3294,6 @@
     </None>
     <None Include="..\Jamfile" />
     <None Include="..\scenes\Makefile.windows" />
+    <None Include="..\README.md" />
   </ItemGroup>
 </Project>

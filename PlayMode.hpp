@@ -32,7 +32,7 @@ struct PlayMode : Mode {
 
 	//time
 	float prev_frame_time = 0.0f;
-	float time = 0.0f;
+	float time = -1.0f;
 
 	//input tracking:
 	struct Button {
@@ -74,13 +74,15 @@ struct PlayMode : Mode {
 		ColorDef(COLOR c, std::string n, std::vector<float> i) : color(c), name(n), intervals(i) {}
 		COLOR color;
 		std::string name;
-		std::vector<float> intervals = { 1.0f }; // Pattern of seconds between each note
+		std::vector<float> intervals = std::vector<float>(); // Pattern of seconds between each note
 		float getFullInterval() {
 			if (_fullInterval <= 0.0f) {
+				_fullInterval = 0.0f;
 				for (auto intervalIter = intervals.begin(); intervalIter != intervals.end(); intervalIter++) {
-					_fullInterval += *intervalIter;
+					_fullInterval += (*intervalIter);
 				}
 			}
+			assert(_fullInterval > 0.0f);
 			return _fullInterval;
 		}
 		private:
@@ -96,10 +98,10 @@ struct PlayMode : Mode {
 	});
 
 	std::vector<ColorDef> colorDefs = std::vector<ColorDef>({
-		ColorDef(COLOR::RED,   "Red",   { 0.5f }),
-		ColorDef(COLOR::BLUE,  "Blue",  { 0.25f }),
-		ColorDef(COLOR::GREEN, "Green", { (1.0f / 3.0f) }),
-		ColorDef(COLOR::PINK,  "Pink",  { 0.5f, 0.25f, 0.25f, 0.5f, 0.75f }),
+		ColorDef(COLOR::RED,   "Red",   { 1.0f }),
+		ColorDef(COLOR::BLUE,  "Blue",  { 0.5f }),
+		ColorDef(COLOR::GREEN, "Green", { (2.0f / 3.0f) }),
+		ColorDef(COLOR::PINK,  "Pink",  { 1.0f, 0.5f, 0.5f, 1.0f, 1.5f }),
 	});
 
 	// 2d vector of basic shapes/colors to duplicate
@@ -127,7 +129,8 @@ struct PlayMode : Mode {
 		Scene::Transform *transform = nullptr;
 		glm::uvec2 gridPos = { 0, 0 }; // position in the grid. 0 <= x, y < 5
 		std::shared_ptr< Sound::PlayingSample > currentSample = nullptr;
-		int last_interval = -1;
+		//size_t last_tone_index = -1;
+		//size_t last_interval_index = -1;
 	};
 
 	std::vector<std::vector<NoteBlock>> noteBlocks;
@@ -157,7 +160,6 @@ struct PlayMode : Mode {
 		nB->transform->rotation = prefabDrawable->transform->rotation;
 		nB->transform->scale = prefabDrawable->transform->scale;
 		nB->gridPos = gridPos;
-		// TODO - set currentSample or last_interval here?
 
 		scene.drawables.emplace_back(nB->transform);
 		Scene::Drawable &drawable = scene.drawables.back();
@@ -196,6 +198,25 @@ struct PlayMode : Mode {
 			}
 		}
 	}
+
+	//----- AUDIO UTIL -----
+	size_t getTargetNote(float t, ColorDef *colorDef) {
+		if (t < 0.0) return SIZE_MAX;
+		float fullInterval = colorDef->getFullInterval();
+		int targetInterval = std::max(0, int(time / fullInterval));
+		float t_remaining = t - fullInterval * targetInterval;
+		size_t targetNote = targetInterval * colorDef->intervals.size();
+		for (auto intervalIter = colorDef->intervals.begin(); intervalIter != colorDef->intervals.end(); intervalIter++) {
+			if (t_remaining <= 0.0f) {
+				return targetNote;
+			}
+			t_remaining -= *intervalIter;
+			targetNote++;
+		}
+		return targetNote;
+	}
+
+	void PlayMode::playNote(NoteBlock& nB, size_t targetNote);
 
 
 	glm::vec3 get_left_speaker_position();

@@ -40,13 +40,16 @@ Load< Sound::Sample > dusty_floor_sample(LoadTagDefault, []() -> Sound::Sample c
 	return new Sound::Sample(data_path("Audio/dusty-floor.opus"));
 });
 
-Load< std::vector<Sound::Sample> > AdVocaSamples(LoadTagDefault, []() -> std::vector<Sound::Sample> const* {
-	return new std::vector<Sound::Sample>( {
-		Sound::Sample(data_path("Audio/AdVoca0.wav")),
-		Sound::Sample(data_path("Audio/AdVoca1.wav")),
-		Sound::Sample(data_path("Audio/AdVoca2.wav")),
-		Sound::Sample(data_path("Audio/AdVoca3.wav")),
-		Sound::Sample(data_path("Audio/AdVoca4.wav")),
+Load< std::vector<std::vector<Sound::Sample>> > PentaSamples(LoadTagDefault, []() -> std::vector<std::vector<Sound::Sample>> const* {
+	return new std::vector< std::vector<Sound::Sample>>({
+		std::vector <Sound::Sample> {
+			Sound::Sample(data_path("Audio/AdVoca0.wav")),
+			Sound::Sample(data_path("Audio/AdVoca1.wav")),
+			Sound::Sample(data_path("Audio/AdVoca2.wav")),
+			Sound::Sample(data_path("Audio/AdVoca3.wav")),
+			Sound::Sample(data_path("Audio/AdVoca4.wav")),
+		},
+		// TODO - populate other instruments
 	});
 });
 
@@ -90,7 +93,8 @@ PlayMode::PlayMode() : scene(*pentaton_scene) {
 	}
 
 	// TODO - delete this NoteBlock, for testing only
-	createNewNoteBlock(SHAPE::SPHERE, COLOR::PINK, glm::uvec2(2, 3));
+	//createNewNoteBlock(SHAPE::CUBE, COLOR::RED, glm::uvec2(0, 0));
+	createNewNoteBlock(SHAPE::SPHERE, COLOR::GREEN, glm::uvec2(0, 0));
 
 	//get pointer to camera for convenience:
 	if (scene.cameras.size() != 1) throw std::runtime_error("Expecting scene to have exactly one camera, but it has " + std::to_string(scene.cameras.size()));
@@ -171,8 +175,13 @@ void PlayMode::update(float elapsed, bool *quit) {
 		return;
 	}
 
-	prev_frame_time = time;
-	time += elapsed;
+	if (time < 0.0f) {
+		prev_frame_time = 0.0f - elapsed;
+		time = 0.0f;
+	} else {
+		prev_frame_time = time;
+		time += elapsed;
+	}
 
 	//slowly rotates through [0,1):
 	/*wobble += elapsed / 10.0f;
@@ -209,7 +218,20 @@ void PlayMode::update(float elapsed, bool *quit) {
 	// Update NoteBlock samples
 	for (auto nBColIter = noteBlocks.begin(); nBColIter != noteBlocks.end(); nBColIter++) {
 		for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
-			// TODO - play or stop a sample if necessary
+			if (nBIter->transform == nullptr) continue;
+			// Play a sample if necessary
+			float fullInterval = nBIter->colorDef->getFullInterval();
+			size_t prevFrameTargetNote = getTargetNote(prev_frame_time, nBIter->colorDef);
+			size_t targetNote = getTargetNote(time, nBIter->colorDef);
+			std::cout << "prev_frame_time: " << prev_frame_time << std::endl;
+			std::cout << "time: " << time << std::endl;
+			std::cout << "prevFrameTargetNote: " << prevFrameTargetNote << std::endl;
+			std::cout << "targetNote: " << targetNote << std::endl << std::endl;
+
+			if (targetNote > prevFrameTargetNote || prevFrameTargetNote == SIZE_MAX) {
+				playNote(*nBIter, targetNote);
+			}
+
 			// If it has a sample, update its position
 			if (nBIter->currentSample != nullptr) {
 				nBIter->currentSample->set_position(nBIter->transform->position, 0.0f);
@@ -284,6 +306,22 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 			glm::vec3(H, 0.0f, 0.0f), glm::vec3(0.0f, H, 0.0f),
 			glm::u8vec4(0xff, 0xff, 0xff, 0x00));
 	}
+}
+
+
+// ===== AUDIO UTIL =====
+
+void PlayMode::playNote(NoteBlock& nB, size_t targetNote) {
+	std::cout << "targetNote: " << targetNote << std::endl;
+	size_t targetTone = targetNote % nB.shapeDef->tone_offsets.size();
+	std::cout << "targetTone: " << targetTone << std::endl;
+	if (nB.currentSample != nullptr) {
+		nB.currentSample->stop();
+	}
+	size_t instrument = nB.gridPos.x;
+	size_t tone = (nB.gridPos.y + nB.shapeDef->tone_offsets[targetTone]) % GRID_HEIGHT;
+	std::cout << "instrument: " << instrument << ". tone: " << tone << std::endl;
+	nB.currentSample = Sound::play_3D(PentaSamples->at(instrument).at(tone), 1.0f, nB.transform->position, 10.0f);
 }
 
 glm::vec3 PlayMode::get_left_speaker_position() {
