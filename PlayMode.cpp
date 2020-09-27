@@ -37,12 +37,23 @@ Load< Scene > pentaton_scene(LoadTagDefault, []() -> Scene const * {
 });
 
 Load< Sound::Sample > dusty_floor_sample(LoadTagDefault, []() -> Sound::Sample const * {
-	return new Sound::Sample(data_path("dusty-floor.opus"));
+	return new Sound::Sample(data_path("Audio/dusty-floor.opus"));
+});
+
+Load< std::vector<Sound::Sample> > AdVocaSamples(LoadTagDefault, []() -> std::vector<Sound::Sample> const* {
+	return new std::vector<Sound::Sample>( {
+		Sound::Sample(data_path("Audio/AdVoca0.wav")),
+		Sound::Sample(data_path("Audio/AdVoca1.wav")),
+		Sound::Sample(data_path("Audio/AdVoca2.wav")),
+		Sound::Sample(data_path("Audio/AdVoca3.wav")),
+		Sound::Sample(data_path("Audio/AdVoca4.wav")),
+	});
 });
 
 PlayMode::PlayMode() : scene(*pentaton_scene) {
-	// Initialize prefab vectors
+	// Initialize prefab and NoteBlock vectors
 	initPrefabVectors();
+	initNoteBlockVectors();
 
 	//get pointers to leg for convenience:
 	/*for (auto &transform : scene.transforms) {
@@ -67,14 +78,6 @@ PlayMode::PlayMode() : scene(*pentaton_scene) {
 				}
 			}
 		}
-		/*if (drawable.transform->name == "CubeRed") setPrefab(SHAPE::CUBE, COLOR::RED, &drawable);
-		if (drawable.transform->name == "CubeBlue") setPrefab(SHAPE::CUBE, COLOR::BLUE, &drawable);
-		if (drawable.transform->name == "SphereRed") setPrefab(SHAPE::SPHERE, COLOR::RED, &drawable);
-		if (drawable.transform->name == "SphereBlue") setPrefab(SHAPE::SPHERE, COLOR::BLUE, &drawable);
-		if (drawable.transform->name == "ConeRed") setPrefab(SHAPE::CONE, COLOR::RED, &drawable);
-		if (drawable.transform->name == "ConeBlue") setPrefab(SHAPE::CONE, COLOR::BLUE, &drawable);
-		if (drawable.transform->name == "TorusRed") setPrefab(SHAPE::TORUS, COLOR::RED, &drawable);
-		if (drawable.transform->name == "TorusBlue") setPrefab(SHAPE::TORUS, COLOR::BLUE, &drawable);*/
 	}
 	// Check if vectors are null
 	for (size_t i = 0; i < prefabs.size(); i++) {
@@ -86,14 +89,12 @@ PlayMode::PlayMode() : scene(*pentaton_scene) {
 		}
 	}
 
+	// TODO - delete this NoteBlock, for testing only
+	createNewNoteBlock(SHAPE::SPHERE, COLOR::PINK, glm::uvec2(2, 3));
+
 	//get pointer to camera for convenience:
 	if (scene.cameras.size() != 1) throw std::runtime_error("Expecting scene to have exactly one camera, but it has " + std::to_string(scene.cameras.size()));
 	camera = &scene.cameras.front();
-
-
-	//start music loop playing:
-	// (note: position will be over-ridden in update())
-	leg_tip_loop = Sound::loop_3D(*dusty_floor_sample, 1.0f, get_left_speaker_position(), 10.0f);
 }
 
 PlayMode::~PlayMode() {
@@ -165,11 +166,13 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 }
 
 void PlayMode::update(float elapsed, bool *quit) {
-
 	if (quit_pressed) {
 		*quit = true;
 		return;
 	}
+
+	prev_frame_time = time;
+	time += elapsed;
 
 	//slowly rotates through [0,1):
 	/*wobble += elapsed / 10.0f;
@@ -189,14 +192,30 @@ void PlayMode::update(float elapsed, bool *quit) {
 	);*/
 
 
-	if (prefab_cpy_test == nullptr) {
-		prefab_cpy_test = cpyPrefab(SHAPE::CUBE, COLOR::BLUE);
-		prefab_cpy_test->transform->position = glm::vec3(1.5f, 1.5f, 1.5f);
+	//float tenSinterval = fmod(time, 10.0f);
+	//if (prefab_cpy_test == nullptr && tenSinterval < 5.0f) {
+	//	leg_tip_loop = Sound::play_3D(AdVocaSamples->front(), 1.0f, get_right_speaker_position(), 10.0f);
+	//	prefab_cpy_test = createNewNoteBlock(SHAPE::CUBE, COLOR::BLUE);
+	//	//prefab_cpy_test->transform->position = glm::vec3(1.5f, 1.5f, 1.5f);
+	//} else if (prefab_cpy_test != nullptr && tenSinterval > 5.0f) {
+	//	leg_tip_loop->stop();
+	//	deleteNoteBlock(prefab_cpy_test);
+	//	prefab_cpy_test = nullptr;
+	//}
+
+	// Update NoteBlock positions
+	updateNoteBlockPositions();
+
+	// Update NoteBlock samples
+	for (auto nBColIter = noteBlocks.begin(); nBColIter != noteBlocks.end(); nBColIter++) {
+		for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
+			// TODO - play or stop a sample if necessary
+			// If it has a sample, update its position
+			if (nBIter->currentSample != nullptr) {
+				nBIter->currentSample->set_position(nBIter->transform->position, 0.0f);
+			}
+		}
 	}
-
-
-	//move sound to follow leg tip position:
-	leg_tip_loop->set_position(get_left_speaker_position(), 1.0f / 60.0f);
 
 	{ //update listener to camera position:
 		glm::mat4x3 frame = camera->transform->make_local_to_parent();
@@ -245,13 +264,23 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 		));
 
 		constexpr float H = 0.09f;
-		lines.draw_text("Mouse motion rotates camera; WASD moves; escape ungrabs mouse",
-			glm::vec3(-aspect + 0.1f * H, -1.0 + 0.1f * H, 0.0),
+		lines.draw_text("escape ungrabs mouse; backspace or grave key to quit",
+			glm::vec3(-aspect + 0.1f * H, -1.0f + 1.3f * H, 0.0),
 			glm::vec3(H, 0.0f, 0.0f), glm::vec3(0.0f, H, 0.0f),
 			glm::u8vec4(0x00, 0x00, 0x00, 0x00));
 		float ofs = 2.0f / drawable_size.y;
-		lines.draw_text("Mouse motion rotates camera; WASD moves; escape ungrabs mouse",
-			glm::vec3(-aspect + 0.1f * H + ofs, -1.0 + + 0.1f * H + ofs, 0.0),
+		lines.draw_text("escape ungrabs mouse; backspace or grave key to quit",
+			glm::vec3(-aspect + 0.1f * H + ofs, -1.0f + 1.3f * H + ofs, 0.0),
+			glm::vec3(H, 0.0f, 0.0f), glm::vec3(0.0f, H, 0.0f),
+			glm::u8vec4(0xff, 0xff, 0xff, 0x00));
+
+
+		lines.draw_text("? to show/hide controls; more controls TBD",
+			glm::vec3(-aspect + 0.1f * H, -1.0f + 0.1f * H, 0.0),
+			glm::vec3(H, 0.0f, 0.0f), glm::vec3(0.0f, H, 0.0f),
+			glm::u8vec4(0x00, 0x00, 0x00, 0x00));
+		lines.draw_text("? to show/hide controls; more controls TBD",
+			glm::vec3(-aspect + 0.1f * H + ofs, -1.0f + 0.1f * H + ofs, 0.0),
 			glm::vec3(H, 0.0f, 0.0f), glm::vec3(0.0f, H, 0.0f),
 			glm::u8vec4(0xff, 0xff, 0xff, 0x00));
 	}

@@ -7,6 +7,8 @@
 
 #include <vector>
 #include <deque>
+#include <stdexcept>
+#include <iostream>
 
 struct PlayMode : Mode {
 	PlayMode();
@@ -17,7 +19,20 @@ struct PlayMode : Mode {
 	virtual void update(float elapsed, bool *quit) override;
 	virtual void draw(glm::uvec2 const &drawable_size) override;
 
-	//----- game state -----
+
+	//----- SETTINGS -----
+	const glm::vec3 NOTEBLOCK_ORIGIN = { -4.0f, -4.0f, 0.0f };
+	const glm::vec2 NOTEBLOCK_DELTA  = {  2.0f,  2.0f };
+
+	const int GRID_WIDTH = 5; // Number of different instruments
+	const int GRID_HEIGHT = 5; // Number of different pitches
+
+
+	//----- GAME STATE -----
+
+	//time
+	float prev_frame_time = 0.0f;
+	float time = 0.0f;
 
 	//input tracking:
 	struct Button {
@@ -60,6 +75,16 @@ struct PlayMode : Mode {
 		COLOR color;
 		std::string name;
 		std::vector<float> intervals = { 1.0f }; // Pattern of seconds between each note
+		float getFullInterval() {
+			if (_fullInterval <= 0.0f) {
+				for (auto intervalIter = intervals.begin(); intervalIter != intervals.end(); intervalIter++) {
+					_fullInterval += *intervalIter;
+				}
+			}
+			return _fullInterval;
+		}
+		private:
+		float _fullInterval = 0.0f;
 	};
 
 	// vectors of shape and color definitions
@@ -80,8 +105,6 @@ struct PlayMode : Mode {
 	// 2d vector of basic shapes/colors to duplicate
 	std::vector<std::vector<Scene::Drawable*>> prefabs;
 
-	Scene::Drawable *prefab_cpy_test = nullptr;
-
 	void initPrefabVectors() {
 		prefabs = std::vector<std::vector<Scene::Drawable*>>(int(SHAPE::END));
 		for (size_t i = 0; i < prefabs.size(); i++) {
@@ -99,35 +122,84 @@ struct PlayMode : Mode {
 	// Note blocks
 	class NoteBlock {
 		public:
-		ShapeDef *shapeDef;
-		ColorDef *colorDef;
-		Scene::Transform *transform;
+		ShapeDef *shapeDef = nullptr;
+		ColorDef *colorDef = nullptr;
+		Scene::Transform *transform = nullptr;
 		glm::uvec2 gridPos = { 0, 0 }; // position in the grid. 0 <= x, y < 5
+		std::shared_ptr< Sound::PlayingSample > currentSample = nullptr;
+		int last_interval = -1;
 	};
 
-	std::vector<NoteBlock> noteBlocks = std::vector<NoteBlock>();
+	std::vector<std::vector<NoteBlock>> noteBlocks;
+
+	void initNoteBlockVectors() {
+		noteBlocks = std::vector<std::vector<NoteBlock>>(GRID_WIDTH);
+		for (size_t i = 0; i < noteBlocks.size(); i++) {
+			noteBlocks[i] = std::vector<NoteBlock>(GRID_HEIGHT, NoteBlock());
+		}
+	}
+
 
 	// Drawable duplication based on Alyssa's game2 code, with permission:
 	// https://github.com/lassyla/game2/blob/master/FishMode.cpp?fbclid=IwAR2gXxc_Omje47Xa7JmJPRN6Nh2jGSEnMVn1Qw7uoSV0QwKu0ZwwAUu5528
-	Scene::Drawable* cpyPrefab(SHAPE s, COLOR c) {
-		NoteBlock nB;
-		nB.shapeDef = &(shapeDefs[int(s)]);
-		nB.colorDef = &(colorDefs[int(c)]);
-		nB.transform = new Scene::Transform();
+	NoteBlock* createNewNoteBlock(SHAPE s, COLOR c, glm::uvec2 gridPos) {
+		Scene::Drawable *prefabDrawable = getPrefab(s, c);
 
-		scene.drawables.emplace_back(nB.transform);
+		NoteBlock *nB = &noteBlocks[gridPos.x][gridPos.y];
+		// TODO - check if there's already one here??
+		if (nB->transform != nullptr) throw std::runtime_error("Tried to create new note block over an existing block");
+		// Initialize NoteBlock values
+		*nB = NoteBlock();
+		nB->shapeDef = &(shapeDefs[int(s)]);
+		nB->colorDef = &(colorDefs[int(c)]);
+		nB->transform = new Scene::Transform();
+		nB->transform->position = prefabDrawable->transform->position;
+		nB->transform->rotation = prefabDrawable->transform->rotation;
+		nB->transform->scale = prefabDrawable->transform->scale;
+		nB->gridPos = gridPos;
+		// TODO - set currentSample or last_interval here?
+
+		scene.drawables.emplace_back(nB->transform);
 		Scene::Drawable &drawable = scene.drawables.back();
-		drawable.pipeline = getPrefab(s, c)->pipeline;
-		noteBlocks.emplace_back(nB);
-		return &drawable;
+		drawable.pipeline = prefabDrawable->pipeline;
+		//noteBlocks.emplace_back(nB);
+		return nB;
+	}
+
+	// Deletes a NoteBlock
+	void deleteNoteBlock(NoteBlock* nB) {
+		for (auto drawableIter = scene.drawables.begin(); drawableIter != scene.drawables.end(); drawableIter++) {
+			if (drawableIter->transform == nB->transform) {
+				scene.drawables.erase(drawableIter);
+				for (auto nBColIter = noteBlocks.begin(); nBColIter != noteBlocks.end(); nBColIter++) {
+					for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
+						if (&(*nBIter) == nB) {
+							*nBIter = NoteBlock();
+							return;
+						}
+					}
+				}
+				break;
+			}
+		}
+		throw std::runtime_error("Tried to delete a NoteBlock but it wasn't found in the noteBlocks vector");
+	}
+
+	// Updates the position of all NoteBlocks based on their gridPos
+	void updateNoteBlockPositions() {
+		for (auto nBColIter = noteBlocks.begin(); nBColIter != noteBlocks.end(); nBColIter++) {
+			for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
+				if (nBIter->transform != nullptr) {
+					nBIter->transform->position = NOTEBLOCK_ORIGIN +
+						glm::vec3(nBIter->gridPos.x * NOTEBLOCK_DELTA.x, nBIter->gridPos.y * NOTEBLOCK_DELTA.y, 0.0f);
+				}
+			}
+		}
 	}
 
 
 	glm::vec3 get_left_speaker_position();
 	glm::vec3 get_right_speaker_position();
-
-	//music coming from the tip of the leg (as a demonstration):
-	std::shared_ptr< Sound::PlayingSample > leg_tip_loop;
 	
 	//camera:
 	Scene::Camera *camera = nullptr;
