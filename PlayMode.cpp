@@ -36,22 +36,48 @@ Load< Scene > pentaton_scene(LoadTagDefault, []() -> Scene const * {
 	});
 });
 
-Load< Sound::Sample > dusty_floor_sample(LoadTagDefault, []() -> Sound::Sample const * {
-	return new Sound::Sample(data_path("Audio/dusty-floor.opus"));
-});
 
+// Load samples!
 Load< std::vector<std::vector<Sound::Sample>> > PentaSamples(LoadTagDefault, []() -> std::vector<std::vector<Sound::Sample>> const* {
 	return new std::vector< std::vector<Sound::Sample>>({
 		std::vector <Sound::Sample> {
-			Sound::Sample(data_path("Audio/AdVoca0.wav")),
-			Sound::Sample(data_path("Audio/AdVoca1.wav")),
-			Sound::Sample(data_path("Audio/AdVoca2.wav")),
-			Sound::Sample(data_path("Audio/AdVoca3.wav")),
-			Sound::Sample(data_path("Audio/AdVoca4.wav")),
+			Sound::Sample(data_path("Audio/PianoFB/F3.wav")),
+			Sound::Sample(data_path("Audio/PianoFB/G3.wav")),
+			Sound::Sample(data_path("Audio/PianoFB/A3.wav")),
+			Sound::Sample(data_path("Audio/PianoFB/C4.wav")),
+			Sound::Sample(data_path("Audio/PianoFB/D4.wav")),
 		},
-		// TODO - populate other instruments
+		std::vector <Sound::Sample> {
+			Sound::Sample(data_path("Audio/PickedBassYR/F.wav")),
+			Sound::Sample(data_path("Audio/PickedBassYR/G.wav")),
+			Sound::Sample(data_path("Audio/PickedBassYR/A.wav")),
+			Sound::Sample(data_path("Audio/PickedBassYR/C.wav")),
+			Sound::Sample(data_path("Audio/PickedBassYR/D.wav")),
+		},
+		std::vector <Sound::Sample> {
+			Sound::Sample(data_path("Audio/ColomboADK/BassDrum-HV1.wav")),
+			Sound::Sample(data_path("Audio/ColomboADK/ClosedHiHat-1.wav")),
+			Sound::Sample(data_path("Audio/ColomboADK/OpenHiHat-1.wav")),
+			Sound::Sample(data_path("Audio/ColomboADK/SnareDrum1-HV1.wav")),
+			Sound::Sample(data_path("Audio/ColomboADK/SideStick-1.wav")),
+		},
+		std::vector <Sound::Sample> {
+			Sound::Sample(data_path("Audio/SpanishClassicalGuitar/F3.wav")),
+			Sound::Sample(data_path("Audio/SpanishClassicalGuitar/G3.wav")),
+			Sound::Sample(data_path("Audio/SpanishClassicalGuitar/A3.wav")),
+			Sound::Sample(data_path("Audio/SpanishClassicalGuitar/C4.wav")),
+			Sound::Sample(data_path("Audio/SpanishClassicalGuitar/D4.wav")),
+		},
+		std::vector <Sound::Sample> {
+			Sound::Sample(data_path("Audio/AdVoca/F.wav")),
+			Sound::Sample(data_path("Audio/AdVoca/G.wav")),
+			Sound::Sample(data_path("Audio/AdVoca/A.wav")),
+			Sound::Sample(data_path("Audio/AdVoca/C.wav")),
+			Sound::Sample(data_path("Audio/AdVoca/D.wav")),
+		},
 	});
 });
+
 
 PlayMode::PlayMode() : scene(*pentaton_scene) {
 	// Initialize prefab and NoteBlock vectors
@@ -93,8 +119,10 @@ PlayMode::PlayMode() : scene(*pentaton_scene) {
 	}
 
 	// TODO - delete this NoteBlock, for testing only
-	//createNewNoteBlock(SHAPE::CUBE, COLOR::RED, glm::uvec2(0, 0));
-	createNewNoteBlock(SHAPE::SPHERE, COLOR::GREEN, glm::uvec2(0, 0));
+	//createNewNoteBlock(SHAPE::CUBE, COLOR::RED, glm::uvec2(2, 0));
+	/*createNewNoteBlock(SHAPE::SPHERE, COLOR::BLUE, glm::uvec2(1, 1));
+	createNewNoteBlock(SHAPE::CONE, COLOR::GREEN, glm::uvec2(0, 2));
+	createNewNoteBlock(SHAPE::TORUS, COLOR::PINK, glm::uvec2(3, 3));*/
 
 	//get pointer to camera for convenience:
 	if (scene.cameras.size() != 1) throw std::runtime_error("Expecting scene to have exactly one camera, but it has " + std::to_string(scene.cameras.size()));
@@ -113,23 +141,44 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 		} else if (evt.key.keysym.sym == SDLK_a) {
 			left.downs += 1;
 			left.pressed = true;
+			if (freeplay) shiftNoteBlocks(-1, 0);
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_d) {
 			right.downs += 1;
 			right.pressed = true;
+			if (freeplay) shiftNoteBlocks(1, 0);
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_w) {
 			up.downs += 1;
 			up.pressed = true;
+			if (freeplay) shiftNoteBlocks(0, 1);
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_s) {
 			down.downs += 1;
 			down.pressed = true;
+			if (freeplay) shiftNoteBlocks(0, -1);
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_BACKSPACE ||
 		           evt.key.keysym.sym == SDLK_BACKQUOTE) {
 			quit_pressed = true;
 			return true;
+		} else if (evt.key.keysym.sym == SDLK_SPACE) { // Construct/destruct, in freeplay
+			if (freeplay) {
+				NoteBlock *nB = &noteBlocks[0][0];
+				if (nB->transform != nullptr) {
+					deleteNoteBlock(nB);
+				} else {
+					createNewNoteBlock(SHAPE::CUBE, COLOR::RED, glm::uvec2(0, 0));
+				}
+			}
+		} else if (evt.key.keysym.sym == SDLK_LEFT) {
+			if (freeplay) cycleNoteBlock(noteBlocks[0][0], 0, -1);
+		} else if (evt.key.keysym.sym == SDLK_RIGHT) {
+			if (freeplay) cycleNoteBlock(noteBlocks[0][0], 0, 1);
+		} else if (evt.key.keysym.sym == SDLK_UP) {
+			if (freeplay) cycleNoteBlock(noteBlocks[0][0], 1, 0);
+		} else if (evt.key.keysym.sym == SDLK_DOWN) {
+			if (freeplay) cycleNoteBlock(noteBlocks[0][0], -1, 0);
 		}
 	} else if (evt.type == SDL_KEYUP) {
 		if (evt.key.keysym.sym == SDLK_a) {
@@ -175,42 +224,17 @@ void PlayMode::update(float elapsed, bool *quit) {
 		return;
 	}
 
+	/*std::cout << "prev_frame_time: " << prev_frame_time << std::endl;
+	std::cout << "time: " << prev_frame_time << std::endl;*/
 	if (time < 0.0f) {
-		prev_frame_time = 0.0f - elapsed;
+		prev_frame_time = 0.0f - std::max(0.001f, elapsed);
 		time = 0.0f;
 	} else {
 		prev_frame_time = time;
 		time += elapsed;
 	}
-
-	//slowly rotates through [0,1):
-	/*wobble += elapsed / 10.0f;
-	wobble -= std::floor(wobble);
-
-	hip->rotation = hip_base_rotation * glm::angleAxis(
-		glm::radians(5.0f * std::sin(wobble * 2.0f * float(M_PI))),
-		glm::vec3(0.0f, 1.0f, 0.0f)
-	);
-	upper_leg->rotation = upper_leg_base_rotation * glm::angleAxis(
-		glm::radians(7.0f * std::sin(wobble * 2.0f * 2.0f * float(M_PI))),
-		glm::vec3(0.0f, 0.0f, 1.0f)
-	);
-	lower_leg->rotation = lower_leg_base_rotation * glm::angleAxis(
-		glm::radians(10.0f * std::sin(wobble * 3.0f * 2.0f * float(M_PI))),
-		glm::vec3(0.0f, 0.0f, 1.0f)
-	);*/
-
-
-	//float tenSinterval = fmod(time, 10.0f);
-	//if (prefab_cpy_test == nullptr && tenSinterval < 5.0f) {
-	//	leg_tip_loop = Sound::play_3D(AdVocaSamples->front(), 1.0f, get_right_speaker_position(), 10.0f);
-	//	prefab_cpy_test = createNewNoteBlock(SHAPE::CUBE, COLOR::BLUE);
-	//	//prefab_cpy_test->transform->position = glm::vec3(1.5f, 1.5f, 1.5f);
-	//} else if (prefab_cpy_test != nullptr && tenSinterval > 5.0f) {
-	//	leg_tip_loop->stop();
-	//	deleteNoteBlock(prefab_cpy_test);
-	//	prefab_cpy_test = nullptr;
-	//}
+	/*std::cout << "NEW prev_frame_time: " << prev_frame_time << std::endl;
+	std::cout << "NEW time: " << prev_frame_time << std::endl;*/
 
 	// Update NoteBlock positions
 	updateNoteBlockPositions();
@@ -223,19 +247,19 @@ void PlayMode::update(float elapsed, bool *quit) {
 			float fullInterval = nBIter->colorDef->getFullInterval();
 			size_t prevFrameTargetNote = getTargetNote(prev_frame_time, nBIter->colorDef);
 			size_t targetNote = getTargetNote(time, nBIter->colorDef);
-			std::cout << "prev_frame_time: " << prev_frame_time << std::endl;
+			/*std::cout << "prev_frame_time: " << prev_frame_time << std::endl;
 			std::cout << "time: " << time << std::endl;
 			std::cout << "prevFrameTargetNote: " << prevFrameTargetNote << std::endl;
-			std::cout << "targetNote: " << targetNote << std::endl << std::endl;
+			std::cout << "targetNote: " << targetNote << std::endl << std::endl;*/
 
 			if (targetNote > prevFrameTargetNote || prevFrameTargetNote == SIZE_MAX) {
 				playNote(*nBIter, targetNote);
 			}
 
 			// If it has a sample, update its position
-			if (nBIter->currentSample != nullptr) {
+			/*if (nBIter->currentSample != nullptr) {
 				nBIter->currentSample->set_position(nBIter->transform->position, 0.0f);
-			}
+			}*/
 		}
 	}
 
@@ -312,16 +336,17 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 // ===== AUDIO UTIL =====
 
 void PlayMode::playNote(NoteBlock& nB, size_t targetNote) {
-	std::cout << "targetNote: " << targetNote << std::endl;
+	//std::cout << "targetNote: " << targetNote << std::endl;
 	size_t targetTone = targetNote % nB.shapeDef->tone_offsets.size();
-	std::cout << "targetTone: " << targetTone << std::endl;
+	//std::cout << "targetTone: " << targetTone << std::endl;
 	if (nB.currentSample != nullptr) {
 		nB.currentSample->stop();
 	}
 	size_t instrument = nB.gridPos.x;
 	size_t tone = (nB.gridPos.y + nB.shapeDef->tone_offsets[targetTone]) % GRID_HEIGHT;
-	std::cout << "instrument: " << instrument << ". tone: " << tone << std::endl;
+	//std::cout << "instrument: " << instrument << ". tone: " << tone << std::endl;
 	nB.currentSample = Sound::play_3D(PentaSamples->at(instrument).at(tone), 1.0f, nB.transform->position, 10.0f);
+
 }
 
 glm::vec3 PlayMode::get_left_speaker_position() {

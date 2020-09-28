@@ -42,6 +42,8 @@ struct PlayMode : Mode {
 
 	bool quit_pressed = false;
 
+	bool freeplay = true; // TODO - add a toggle button for this? 'F'?
+
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
 
@@ -100,7 +102,8 @@ struct PlayMode : Mode {
 	std::vector<ColorDef> colorDefs = std::vector<ColorDef>({
 		ColorDef(COLOR::RED,   "Red",   { 1.0f }),
 		ColorDef(COLOR::BLUE,  "Blue",  { 0.5f }),
-		ColorDef(COLOR::GREEN, "Green", { (2.0f / 3.0f) }),
+		ColorDef(COLOR::GREEN, "Green", { 2.0f, 1.0f }),
+		//ColorDef(COLOR::GREEN, "Green", { (2.0f / 3.0f) }),
 		ColorDef(COLOR::PINK,  "Pink",  { 1.0f, 0.5f, 0.5f, 1.0f, 1.5f }),
 	});
 
@@ -121,7 +124,8 @@ struct PlayMode : Mode {
 		prefabs[int(s)][int(c)] = drawable;
 	}
 
-	// Note blocks
+	// ===== NOTEBLOCKS =====
+
 	class NoteBlock {
 		public:
 		ShapeDef *shapeDef = nullptr;
@@ -185,6 +189,31 @@ struct PlayMode : Mode {
 			}
 		}
 		throw std::runtime_error("Tried to delete a NoteBlock but it wasn't found in the noteBlocks vector");
+	}
+
+	// Shifts all NoteBlocks by a certain amount in the grid
+	void shiftNoteBlocks(int dx, int dy) {
+		std::vector<std::vector<NoteBlock>> noteBlocksCpy(noteBlocks);
+		initNoteBlockVectors();
+		for (auto nBColIter = noteBlocksCpy.begin(); nBColIter != noteBlocksCpy.end(); nBColIter++) {
+			for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
+				if (nBIter->transform != nullptr) {
+					size_t x = (int(nBIter->gridPos.x) + dx + GRID_WIDTH) % GRID_WIDTH;
+					size_t y = (int(nBIter->gridPos.y) + dy + GRID_HEIGHT) % GRID_HEIGHT;
+					noteBlocks.at(x).at(y) = *nBIter;
+					noteBlocks.at(x).at(y).gridPos = glm::uvec2(x, y);
+				}
+			}
+		}
+	}
+
+	// Cycles a NoteBlock's shape and/or color
+	void cycleNoteBlock(NoteBlock &nB, int dShape, int dColor) {
+		if (nB.transform == nullptr) return;
+		SHAPE s = SHAPE((int(nB.shapeDef->shape) + dShape + shapeDefs.size()) % (shapeDefs.size()));
+		COLOR c = COLOR((int(nB.colorDef->color) + dColor + colorDefs.size()) % (colorDefs.size()));
+		deleteNoteBlock(&nB);
+		createNewNoteBlock(s, c, glm::uvec2(0, 0));
 	}
 
 	// Updates the position of all NoteBlocks based on their gridPos
