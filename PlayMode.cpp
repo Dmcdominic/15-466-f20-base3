@@ -135,34 +135,41 @@ PlayMode::~PlayMode() {
 bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size) {
 
 	if (evt.type == SDL_KEYDOWN) {
-		if (evt.key.keysym.sym == SDLK_ESCAPE) {
+		if (evt.key.keysym.sym == SDLK_ESCAPE) {  // Free the mouse
 			SDL_SetRelativeMouseMode(SDL_FALSE);
 			return true;
-		} else if (evt.key.keysym.sym == SDLK_a) {
+		} else if (evt.key.keysym.sym == SDLK_a) { // Shift left
 			left.downs += 1;
 			left.pressed = true;
-			if (freeplay) shiftNoteBlocks(-1, 0);
+			shiftNoteBlocks(-1, 0);
 			return true;
-		} else if (evt.key.keysym.sym == SDLK_d) {
+		} else if (evt.key.keysym.sym == SDLK_d) { // Shift right
 			right.downs += 1;
 			right.pressed = true;
-			if (freeplay) shiftNoteBlocks(1, 0);
+			shiftNoteBlocks(1, 0);
 			return true;
-		} else if (evt.key.keysym.sym == SDLK_w) {
+		} else if (evt.key.keysym.sym == SDLK_w) { // Shift up
 			up.downs += 1;
 			up.pressed = true;
-			if (freeplay) shiftNoteBlocks(0, 1);
+			shiftNoteBlocks(0, 1);
 			return true;
-		} else if (evt.key.keysym.sym == SDLK_s) {
+		} else if (evt.key.keysym.sym == SDLK_s) { // Shift down
 			down.downs += 1;
 			down.pressed = true;
-			if (freeplay) shiftNoteBlocks(0, -1);
+			shiftNoteBlocks(0, -1);
+			return true;
+		} else if (evt.key.keysym.sym == SDLK_SLASH) { // Toggle showControls
+			showControls = !showControls;
+			return true;
+		} else if (evt.key.keysym.sym == SDLK_RETURN) { // Toggle freeplay
+			freeplay = !freeplay;
+			// TODO - more freeplay/level stuff to set here?
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_BACKSPACE ||
-		           evt.key.keysym.sym == SDLK_BACKQUOTE) {
+		           evt.key.keysym.sym == SDLK_BACKQUOTE) { // QUIT
 			quit_pressed = true;
 			return true;
-		} else if (evt.key.keysym.sym == SDLK_SPACE) { // Construct/destruct, in freeplay
+		} else if (evt.key.keysym.sym == SDLK_SPACE) { // Construct/destruct (freeplay)
 			if (freeplay) {
 				NoteBlock *nB = &noteBlocks[0][0];
 				if (nB->transform != nullptr) {
@@ -171,13 +178,13 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 					createNewNoteBlock(SHAPE::CUBE, COLOR::RED, glm::uvec2(0, 0));
 				}
 			}
-		} else if (evt.key.keysym.sym == SDLK_LEFT) {
+		} else if (evt.key.keysym.sym == SDLK_LEFT) {             // Cycle (freeplay)
 			if (freeplay) cycleNoteBlock(noteBlocks[0][0], 0, -1);
-		} else if (evt.key.keysym.sym == SDLK_RIGHT) {
+		} else if (evt.key.keysym.sym == SDLK_RIGHT) {            // Cycle (freeplay)
 			if (freeplay) cycleNoteBlock(noteBlocks[0][0], 0, 1);
-		} else if (evt.key.keysym.sym == SDLK_UP) {
+		} else if (evt.key.keysym.sym == SDLK_UP) {               // Cycle (freeplay)
 			if (freeplay) cycleNoteBlock(noteBlocks[0][0], 1, 0);
-		} else if (evt.key.keysym.sym == SDLK_DOWN) {
+		} else if (evt.key.keysym.sym == SDLK_DOWN) {             // Cycle (freeplay)
 			if (freeplay) cycleNoteBlock(noteBlocks[0][0], -1, 0);
 		}
 	} else if (evt.type == SDL_KEYUP) {
@@ -244,7 +251,6 @@ void PlayMode::update(float elapsed, bool *quit) {
 		for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
 			if (nBIter->transform == nullptr) continue;
 			// Play a sample if necessary
-			float fullInterval = nBIter->colorDef->getFullInterval();
 			size_t prevFrameTargetNote = getTargetNote(prev_frame_time, nBIter->colorDef);
 			size_t targetNote = getTargetNote(time, nBIter->colorDef);
 			/*std::cout << "prev_frame_time: " << prev_frame_time << std::endl;
@@ -299,7 +305,7 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 
 	scene.draw(*camera);
 
-	{ //use DrawLines to overlay some text:
+	if (showControls) { //use DrawLines to overlay some text:
 		glDisable(GL_DEPTH_TEST);
 		float aspect = float(drawable_size.x) / float(drawable_size.y);
 		DrawLines lines(glm::mat4(
@@ -327,6 +333,19 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 			glm::u8vec4(0x00, 0x00, 0x00, 0x00));
 		lines.draw_text("? to show/hide controls; more controls TBD",
 			glm::vec3(-aspect + 0.1f * H + ofs, -1.0f + 0.1f * H + ofs, 0.0),
+			glm::vec3(H, 0.0f, 0.0f), glm::vec3(0.0f, H, 0.0f),
+			glm::u8vec4(0xff, 0xff, 0xff, 0x00));
+
+
+		// Level/freeplay text
+		std::string str = "Level 0"; // TODO - actually use level index
+		if (freeplay) str = "Freeplay";
+		lines.draw_text(str,
+			glm::vec3(-aspect + 0.1f * H, 1.0f - 1.1f * H, 0.0),
+			glm::vec3(H, 0.0f, 0.0f), glm::vec3(0.0f, H, 0.0f),
+			glm::u8vec4(0x00, 0x00, 0x00, 0x00));
+		lines.draw_text(str,
+			glm::vec3(-aspect + 0.1f * H + ofs, 1.0f - 1.1f * H + ofs, 0.0),
 			glm::vec3(H, 0.0f, 0.0f), glm::vec3(0.0f, H, 0.0f),
 			glm::u8vec4(0xff, 0xff, 0xff, 0x00));
 	}

@@ -43,6 +43,7 @@ struct PlayMode : Mode {
 	bool quit_pressed = false;
 
 	bool freeplay = true; // TODO - add a toggle button for this? 'F'?
+	bool showControls = true;
 
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
@@ -180,6 +181,9 @@ struct PlayMode : Mode {
 				for (auto nBColIter = noteBlocks.begin(); nBColIter != noteBlocks.end(); nBColIter++) {
 					for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
 						if (&(*nBIter) == nB) {
+							if (nBIter->currentSample != nullptr) {
+								nBIter->currentSample->stop(1.0f);
+							}
 							*nBIter = NoteBlock();
 							return;
 						}
@@ -245,7 +249,7 @@ struct PlayMode : Mode {
 		return targetNote;
 	}
 
-	void PlayMode::playNote(NoteBlock& nB, size_t targetNote);
+	void playNote(NoteBlock& nB, size_t targetNote);
 
 
 	glm::vec3 get_left_speaker_position();
