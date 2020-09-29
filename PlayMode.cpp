@@ -82,21 +82,16 @@ Load< std::vector<std::vector<Sound::Sample>> > PentaSamples(LoadTagDefault, [](
 PlayMode::PlayMode() : scene(*pentaton_scene) {
 	// Initialize prefab and NoteBlock vectors
 	initPrefabVectors();
-	initNoteBlockVectors();
+	initNoteBlockVectors(&noteBlocks);
+	initNoteBlockVectors(&targetNoteBlocks);
+	editableNBs = &noteBlocks;
+	//initTargetNoteBlockVectors();
 
-	//get pointers to leg for convenience:
-	/*for (auto &transform : scene.transforms) {
-		if (transform.name == "Hip.FL") hip = &transform;
-		else if (transform.name == "UpperLeg.FL") upper_leg = &transform;
-		else if (transform.name == "LowerLeg.FL") lower_leg = &transform;
+	//get pointers to scene objects
+	for (auto &transform : scene.transforms) {
+		if (transform.name == "Question Mark") question_mark = &transform;
 	}
-	if (hip == nullptr) throw std::runtime_error("Hip not found.");
-	if (upper_leg == nullptr) throw std::runtime_error("Upper leg not found.");
-	if (lower_leg == nullptr) throw std::runtime_error("Lower leg not found.");
-
-	hip_base_rotation = hip->rotation;
-	upper_leg_base_rotation = upper_leg->rotation;
-	lower_leg_base_rotation = lower_leg->rotation;*/
+	if (question_mark == nullptr) throw std::runtime_error("question_mark not found.");
 
 	// Get pointers to prefabs
 	for (auto &drawable : scene.drawables) {
@@ -117,6 +112,9 @@ PlayMode::PlayMode() : scene(*pentaton_scene) {
 			}
 		}
 	}
+
+	// Init some standard values
+	question_mark_scale = question_mark->scale;
 
 	// TODO - delete this NoteBlock, for testing only
 	//createNewNoteBlock(SHAPE::CUBE, COLOR::RED, glm::uvec2(2, 0));
@@ -141,43 +139,50 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 		} else if (evt.key.keysym.sym == SDLK_a) { // Shift left
 			left.downs += 1;
 			left.pressed = true;
-			shiftNoteBlocks(-1, 0);
+			if (!playingTargetAudio) shiftNoteBlocks(-1, 0);
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_d) { // Shift right
 			right.downs += 1;
 			right.pressed = true;
-			shiftNoteBlocks(1, 0);
+			if (!playingTargetAudio) shiftNoteBlocks(1, 0);
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_w) { // Shift up
 			up.downs += 1;
 			up.pressed = true;
-			shiftNoteBlocks(0, 1);
+			if (!playingTargetAudio) shiftNoteBlocks(0, 1);
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_s) { // Shift down
 			down.downs += 1;
 			down.pressed = true;
-			shiftNoteBlocks(0, -1);
+			if (!playingTargetAudio) shiftNoteBlocks(0, -1);
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_SLASH) { // Toggle showControls
 			showControls = !showControls;
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_RETURN) { // Toggle freeplay
 			freeplay = !freeplay;
+			playingTargetAudio = false;
 			// TODO - more freeplay/level stuff to set here?
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_BACKSPACE ||
 		           evt.key.keysym.sym == SDLK_BACKQUOTE) { // QUIT
 			quit_pressed = true;
 			return true;
-		} else if (evt.key.keysym.sym == SDLK_SPACE) { // Construct/destruct (freeplay)
+		} else if (evt.key.keysym.sym == SDLK_SPACE) { // Hold for target audio (level), Construct/destruct (freeplay)
+			space.downs += 1;
+			space.pressed = true;
 			if (freeplay) {
-				NoteBlock *nB = &noteBlocks[0][0];
+				std::cout << "space pressed, and in freeplay" << std::endl;
+				std::cout << "noteBlocks.size(): " << noteBlocks.size() << std::endl;
+				NoteBlock *nB = &(noteBlocks.at(0).at(0));
+				std::cout << "nB found" << std::endl;
 				if (nB->transform != nullptr) {
 					deleteNoteBlock(nB);
 				} else {
 					createNewNoteBlock(SHAPE::CUBE, COLOR::RED, glm::uvec2(0, 0));
 				}
 			}
+			return true;
 		} else if (evt.key.keysym.sym == SDLK_LEFT) {             // Cycle (freeplay)
 			if (freeplay) cycleNoteBlock(noteBlocks[0][0], 0, -1);
 		} else if (evt.key.keysym.sym == SDLK_RIGHT) {            // Cycle (freeplay)
@@ -199,6 +204,9 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 			return true;
 		} else if (evt.key.keysym.sym == SDLK_s) {
 			down.pressed = false;
+			return true;
+		} else if (evt.key.keysym.sym == SDLK_SPACE) {
+			space.pressed = false;
 			return true;
 		}
 	} else if (evt.type == SDL_MOUSEBUTTONDOWN) {
@@ -226,48 +234,58 @@ bool PlayMode::handle_event(SDL_Event const &evt, glm::uvec2 const &window_size)
 }
 
 void PlayMode::update(float elapsed, bool *quit) {
+	// Check user input (quit)
 	if (quit_pressed) {
 		*quit = true;
 		return;
 	}
 
-	/*std::cout << "prev_frame_time: " << prev_frame_time << std::endl;
-	std::cout << "time: " << prev_frame_time << std::endl;*/
-	if (time < 0.0f) {
-		prev_frame_time = 0.0f - std::max(0.001f, elapsed);
-		time = 0.0f;
-	} else {
-		prev_frame_time = time;
-		time += elapsed;
-	}
-	/*std::cout << "NEW prev_frame_time: " << prev_frame_time << std::endl;
-	std::cout << "NEW time: " << prev_frame_time << std::endl;*/
-
-	// Update NoteBlock positions
-	updateNoteBlockPositions();
-
-	// Update NoteBlock samples
-	for (auto nBColIter = noteBlocks.begin(); nBColIter != noteBlocks.end(); nBColIter++) {
-		for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
-			if (nBIter->transform == nullptr) continue;
-			// Play a sample if necessary
-			size_t prevFrameTargetNote = getTargetNote(prev_frame_time, nBIter->colorDef);
-			size_t targetNote = getTargetNote(time, nBIter->colorDef);
-			/*std::cout << "prev_frame_time: " << prev_frame_time << std::endl;
-			std::cout << "time: " << time << std::endl;
-			std::cout << "prevFrameTargetNote: " << prevFrameTargetNote << std::endl;
-			std::cout << "targetNote: " << targetNote << std::endl << std::endl;*/
-
-			if (targetNote > prevFrameTargetNote || prevFrameTargetNote == SIZE_MAX) {
-				playNote(*nBIter, targetNote);
-			}
-
-			// If it has a sample, update its position
-			/*if (nBIter->currentSample != nullptr) {
-				nBIter->currentSample->set_position(nBIter->transform->position, 0.0f);
-			}*/
+	// Check user input (space for target audio)
+	if (!freeplay) {
+		if (space.pressed && !playingTargetAudio) {
+			playingTargetAudio = true;
+			music_time = -0.1f;
+		}
+		else if (!space.pressed && playingTargetAudio) {
+			playingTargetAudio = false;
+			music_time = -0.1f;
 		}
 	}
+
+	/*std::cout << "editableNBs.size(): " << editableNBs.size() << std::endl;
+	if (editableNBs.size() > 0 && editableNBs.at(0).size() > 0) {
+		std::cout << "color at (0, 0): " << int(editableNBs.at(0).at(0).colorDef->color) << std::endl;
+	}*/
+
+	// Update time
+	/*std::cout << "prev_music_time: " << prev_music_time << std::endl;
+	std::cout << "music_time: " << music_time << std::endl;*/
+	if (music_time < 0.0f) {
+		prev_music_time = 0.0f - std::max(0.001f, elapsed);
+		music_time = 0.0f;
+	} else {
+		prev_music_time = music_time;
+		music_time += elapsed;
+	}
+	/*std::cout << "NEW prev_music_time: " << prev_music_time << std::endl;
+	std::cout << "NEW music_time: " << music_time << std::endl;*/
+
+
+	// Update based on playingTargetAudio
+	if (playingTargetAudio) {
+		// TODO - need to set other stuff? Like which noteBlocks to shift/play, etc.
+		question_mark->scale = question_mark_scale;
+	} else {
+		question_mark->scale = glm::vec3(0.0f);
+	}
+
+
+	// Update NoteBlock positions and samples
+	updateNoteBlockPositions();
+	std::cout << "A - noteBlocks.size(): " << noteBlocks.size() << std::endl;
+	updateNoteBlockSamples();
+
+	std::cout << "Z - noteBlocks.size(): " << noteBlocks.size() << std::endl;
 
 	{ //update listener to camera position:
 		glm::mat4x3 frame = camera->transform->make_local_to_parent();
@@ -354,18 +372,25 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 
 // ===== AUDIO UTIL =====
 
+// Standard CUBE shape actually plays a note
+// Other shapes move other NoteBlocks
 void PlayMode::playNote(NoteBlock& nB, size_t targetNote) {
-	//std::cout << "targetNote: " << targetNote << std::endl;
-	size_t targetTone = targetNote % nB.shapeDef->tone_offsets.size();
-	//std::cout << "targetTone: " << targetTone << std::endl;
-	if (nB.currentSample != nullptr) {
-		nB.currentSample->stop();
+	if (nB.shapeDef->shape == SHAPE::CUBE) { // CUBE actually plays a note
+		//std::cout << "targetNote: " << targetNote << std::endl;
+		size_t targetTone = targetNote % nB.shapeDef->tone_offsets.size();
+		//std::cout << "targetTone: " << targetTone << std::endl;
+		if (nB.currentSample != nullptr) {
+			nB.currentSample->stop();
+		}
+		size_t instrument = nB.gridPos.x;
+		size_t tone = (nB.gridPos.y + nB.shapeDef->tone_offsets[targetTone]) % GRID_HEIGHT;
+		//std::cout << "instrument: " << instrument << ". tone: " << tone << std::endl;
+		nB.currentSample = Sound::play_3D(PentaSamples->at(instrument).at(tone), 1.0f, nB.transform->position, 10.0f);
+	} else if (nB.shapeDef->shape == SHAPE::CONE) { // CONE shifts its column upward
+		shiftNoteBlocks(0, 1, nB.gridPos.x, -1);
+	} else if (nB.shapeDef->shape == SHAPE::TORUS) { // TORUS rotates the blocks around it
+		rotateNoteBlocks(nB.gridPos, true);
 	}
-	size_t instrument = nB.gridPos.x;
-	size_t tone = (nB.gridPos.y + nB.shapeDef->tone_offsets[targetTone]) % GRID_HEIGHT;
-	//std::cout << "instrument: " << instrument << ". tone: " << tone << std::endl;
-	nB.currentSample = Sound::play_3D(PentaSamples->at(instrument).at(tone), 1.0f, nB.transform->position, 10.0f);
-
 }
 
 glm::vec3 PlayMode::get_left_speaker_position() {
