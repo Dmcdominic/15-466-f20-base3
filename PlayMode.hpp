@@ -26,6 +26,8 @@ struct PlayMode : Mode {
 
 	const int GRID_WIDTH = 5; // Number of different instruments
 	const int GRID_HEIGHT = 5; // Number of different pitches
+	
+	const float LVL_FINAL_LOOP_TIME = 5.0f;
 
 
 	// ----- GAME STATE -----
@@ -46,19 +48,22 @@ struct PlayMode : Mode {
 	bool showControls = true;
 
 	bool playingTargetAudio = false;
+	bool playingLvlFinalLoop = false;
 	glm::vec3 question_mark_scale;
+	glm::vec3 check_mark_scale;
 
 	//local copy of the game scene (so code can change it during gameplay):
 	Scene scene;
 
 	// Scene Transforms
 	Scene::Transform *question_mark = nullptr;
+	Scene::Transform* check_mark = nullptr;
 
 
 	// ----- SHAPES AND COLORS -----
 
 	enum class SHAPE {
-		CUBE, /*SPHERE,*/ CONE, TORUS, END
+		CUBE, SPHERE, CONE, TORUS, END
 	};
 	enum class COLOR {
 		RED, BLUE, GREEN, PINK, /*YELLOW, CYAN, WHITE, BLACK,*/ END
@@ -66,11 +71,11 @@ struct PlayMode : Mode {
 
 	class ShapeDef {
 		public:
-		ShapeDef(SHAPE s, std::string n, std::vector<int> t_o, bool sb) : shape(s), name(n), tone_offsets(t_o), shiftblock(sb) {}
+		ShapeDef(SHAPE s, std::string n, std::vector<int> t_o, bool sb) : shape(s), name(n), tone_offsets(t_o) /*, shiftblock(sb)*/ {}
 		SHAPE shape;
 		std::string name;
 		std::vector<int> tone_offsets = { 0 }; // Pattern of tones in the pentatonic scale to play, relative to the shape's row note
-		bool shiftblock = false;
+		//bool shiftblock = false;
 	};
 
 	class ColorDef {
@@ -96,20 +101,17 @@ struct PlayMode : Mode {
 	// vectors of shape and color definitions
 	std::vector<ShapeDef> shapeDefs = std::vector<ShapeDef>({
 		ShapeDef(SHAPE::CUBE,   "Cube",   { 0 }, false),
-		//ShapeDef(SHAPE::SPHERE, "Sphere", { 0 }),
-		ShapeDef(SHAPE::CONE,   "Cone",   { 0 }, true),
-		ShapeDef(SHAPE::TORUS,  "Torus",  { 0 }, true)
-		/*ShapeDef(SHAPE::SPHERE, "Sphere", { 0, 1, 2 }),
-		ShapeDef(SHAPE::CONE,   "Cone",   { 0, 0, 2, 2 }),
-		ShapeDef(SHAPE::TORUS,  "Torus",  { 0, 2, 4, 1, 3, 0, 2, 4, 3, 1 }),*/
+		ShapeDef(SHAPE::SPHERE, "Sphere", { 0, 1, 2 }, true),
+		ShapeDef(SHAPE::CONE,   "Cone",   { 0, 0, 2, 2 }, true),
+		ShapeDef(SHAPE::TORUS,  "Torus",  { 0, 2, 4, 1, 3, 0, 2, 4, 3, 1 }, true),
 	});
 
 	std::vector<ColorDef> colorDefs = std::vector<ColorDef>({
 		ColorDef(COLOR::RED,   "Red",   { 1.0f }),
 		ColorDef(COLOR::BLUE,  "Blue",  { 0.5f }),
-		ColorDef(COLOR::GREEN, "Green", { 2.0f, 1.0f }),
+		ColorDef(COLOR::GREEN, "Green", { 0.25f, 0.25f, 1.0f }),
 		//ColorDef(COLOR::GREEN, "Green", { (2.0f / 3.0f) }),
-		ColorDef(COLOR::PINK,  "Pink",  { 1.0f, 0.5f, 0.5f, 1.0f, 1.5f }), // TODO - make this interval actually random? (can be global pink random)
+		ColorDef(COLOR::PINK,  "Pink",  { 2.0f, 1.0f, 0.5f, 0.25f, 0.25f }), // TODO - make this interval actually random? (can be global pink random)
 	});
 
 	const float SHIFTBLOCK_T_OFFSET = 0.25f; // The time offset for when shiftblocks do their shift
@@ -144,34 +146,56 @@ struct PlayMode : Mode {
 		//size_t last_interval_index = -1;
 	};
 
-	std::vector<std::vector<NoteBlock>> noteBlocks;
-	std::vector<std::vector<NoteBlock>> targetNoteBlocks;
-	std::vector<std::vector<NoteBlock>> *editableNBs; // While iterating over noteBlocks and shifting notes, this is the vector that should actually be edited
+	typedef std::vector<std::vector<NoteBlock>> nbVec;
 
-	void initNoteBlockVectors(std::vector<std::vector<NoteBlock>> *nBs_to_init, bool fadeout = true) {
+	nbVec noteBlocks;
+	nbVec targetNoteBlocks;
+	//nbVec *editableNBs; // While iterating over noteBlocks and shifting notes, this is the vector that should actually be edited
+
+	void initNoteBlockVectors(nbVec *nBs_to_init, bool fadeout = true) {
 		// First check if any samples are playing that should be stopped
 		for (auto nBColIter = nBs_to_init->begin(); nBColIter != nBs_to_init->end(); nBColIter++) {
 			for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
-				if (nBIter->currentSample != nullptr) {
+				if (nBIter->currentSample) {
 					nBIter->currentSample->stop(fadeout ? 1.0f : 0.02f);
+				}
+				/*if (nBIter->transform != nullptr) {
+					deleteNoteBlock(nBs_to_init, &(*nBIter), (fadeout ? 1.0f : 0.02f));
+				}*/
+			}
+		}
+		// Set empty vectors of correct length
+		*nBs_to_init = nbVec(GRID_WIDTH);
+		for (size_t i = 0; i < nBs_to_init->size(); i++) {
+			nBs_to_init->at(i) = std::vector<NoteBlock>(GRID_HEIGHT, NoteBlock());
+		}
+	}
+
+	// Actually deletes all the noteBlocks before resetting the vector
+	void clearNoteBlockVectors(nbVec* nBs_to_init, bool fadeout = true) {
+		// First check if any samples are playing that should be stopped
+		for (auto nBColIter = nBs_to_init->begin(); nBColIter != nBs_to_init->end(); nBColIter++) {
+			for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
+				if (nBIter->transform != nullptr) {
+					deleteNoteBlock(nBs_to_init, &(*nBIter), (fadeout ? 1.0f : 0.02f));
 				}
 			}
 		}
 		// Set empty vectors of correct length
-		*nBs_to_init = std::vector<std::vector<NoteBlock>>(GRID_WIDTH);
-		for (size_t i = 0; i < noteBlocks.size(); i++) {
-			noteBlocks[i] = std::vector<NoteBlock>(GRID_HEIGHT, NoteBlock());
+		*nBs_to_init = nbVec(GRID_WIDTH);
+		for (size_t i = 0; i < nBs_to_init->size(); i++) {
+			nBs_to_init->at(i) = std::vector<NoteBlock>(GRID_HEIGHT, NoteBlock());
 		}
 	}
 
 
 	// Drawable duplication based on Alyssa's game2 code, with permission:
 	// https://github.com/lassyla/game2/blob/master/FishMode.cpp?fbclid=IwAR2gXxc_Omje47Xa7JmJPRN6Nh2jGSEnMVn1Qw7uoSV0QwKu0ZwwAUu5528
-	NoteBlock* createNewNoteBlock(SHAPE s, COLOR c, glm::uvec2 gridPos) {
-		std::cout << "createNewNoteBlock() called" << std::endl;
+	NoteBlock* createNewNoteBlock(nbVec *nBs_to_create_in, SHAPE s, COLOR c, glm::uvec2 gridPos) {
+		//std::cout << "createNewNoteBlock() called" << std::endl;
 		Scene::Drawable *prefabDrawable = getPrefab(s, c);
 
-		NoteBlock *nB = &noteBlocks[gridPos.x][gridPos.y];
+		NoteBlock *nB = &(*nBs_to_create_in).at(gridPos.x).at(gridPos.y);
 		if (nB->transform != nullptr) throw std::runtime_error("Tried to create new note block over an existing block");
 		// Initialize NoteBlock values
 		*nB = NoteBlock();
@@ -181,29 +205,28 @@ struct PlayMode : Mode {
 		nB->transform->position = prefabDrawable->transform->position;
 		nB->transform->rotation = prefabDrawable->transform->rotation;
 		nB->transform->scale = prefabDrawable->transform->scale;
+		if (nBs_to_create_in == &targetNoteBlocks) nB->transform->scale = glm::vec3(0.0f);
 		nB->gridPos = gridPos;
 
 		scene.drawables.emplace_back(nB->transform);
 		Scene::Drawable &drawable = scene.drawables.back();
 		drawable.pipeline = prefabDrawable->pipeline;
-		std::cout << "createNewNoteBlock() returning" << std::endl;
+		//std::cout << "createNewNoteBlock() returning" << std::endl;
 		return nB;
 	}
 
 	// Deletes a NoteBlock
-	void deleteNoteBlock(NoteBlock* nB) {
-		std::cout << "deleteNoteBlock() called" << std::endl;
+	void deleteNoteBlock(nbVec *noteblocks_to_delete_from, NoteBlock* nB, float fade = 1.0f) {
 		for (auto drawableIter = scene.drawables.begin(); drawableIter != scene.drawables.end(); drawableIter++) {
 			if (drawableIter->transform == nB->transform) {
 				scene.drawables.erase(drawableIter);
-				for (auto nBColIter = noteBlocks.begin(); nBColIter != noteBlocks.end(); nBColIter++) {
+				for (auto nBColIter = noteblocks_to_delete_from->begin(); nBColIter != noteblocks_to_delete_from->end(); nBColIter++) {
 					for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
 						if (&(*nBIter) == nB) {
 							if (nBIter->currentSample != nullptr) {
-								nBIter->currentSample->stop(1.0f);
+								nBIter->currentSample->stop(fade);
 							}
 							*nBIter = NoteBlock();
-							std::cout << "deleteNoteBlock() returning" << std::endl;
 							return;
 						}
 					}
@@ -216,10 +239,9 @@ struct PlayMode : Mode {
 
 	// Shifts all NoteBlocks by a certain amount in the grid
 	void shiftNoteBlocks(int dx, int dy, int col = -1, int row = -1) {
-		std::cout << "shiftNoteBlocks() called" << std::endl;
-		std::vector<std::vector<NoteBlock>> noteBlocksCpy(noteBlocks);
+		nbVec noteBlocksCpy(noteBlocks);
 		initNoteBlockVectors(&noteBlocks);
-		size_t x, y, og_x = 0, og_y = 0;
+		int x, y;
 		for (auto nBColIter = noteBlocksCpy.begin(); nBColIter != noteBlocksCpy.end(); nBColIter++) {
 			for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
 				if (nBIter->transform != nullptr) {
@@ -232,53 +254,75 @@ struct PlayMode : Mode {
 						x = nBIter->gridPos.x;
 						y = nBIter->gridPos.y;
 					}
-					std::cout << "setting (og_x, og_y) at editableNBs... (" << x << ", " << og_y << ")" << std::endl;
-					std::cout << "noteBlocks.at(og_x).at(og_y).gridPos.y: " << (noteBlocks.at(og_x).at(og_y).gridPos.y) << std::endl;
-					(*editableNBs).at(og_x).at(og_y) = *nBIter;
-					(*editableNBs).at(og_x).at(og_y).gridPos = glm::uvec2(x, y);
+					noteBlocks.at(x).at(y) = *nBIter;
+					noteBlocks.at(x).at(y).gridPos = glm::uvec2(x, y);
 				}
-				og_y++;
 			}
-			og_x++;
 		}
-		std::cout << "shiftNoteBLocks() returning" << std::endl;
 	}
 
-	// Rotates all NoteBlocks in the 8 cells around the center
-	// They progress one cell clockwise if CW == true, counter-clockwise otherwise
-	void rotateNoteBlocks(glm::uvec2 center, bool CW) {
-		std::vector<std::vector<NoteBlock>> noteBlocksCpy(noteBlocks);
+	// Rotates all NoteBlocks 90 degrees around the center (2, 2)
+	void rotateFullGrid(bool clockwise) {
+		nbVec noteBlocksCpy(noteBlocks);
 		initNoteBlockVectors(&noteBlocks);
 		int x, y;
 		for (auto nBColIter = noteBlocksCpy.begin(); nBColIter != noteBlocksCpy.end(); nBColIter++) {
 			for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
 				if (nBIter->transform != nullptr) {
-					// TODO - can shiftblocks themselves be shifted?? (have to have some "override" bool for WASD then)
-					x = nBIter->gridPos.x;
-					y = nBIter->gridPos.y;
-					// TODO
-					(*editableNBs).at(x).at(y) = *nBIter;
-					(*editableNBs).at(x).at(y).gridPos = glm::uvec2(x, y);
+					if (clockwise) {
+						y = (GRID_HEIGHT - 1) - nBIter->gridPos.x;
+						x = nBIter->gridPos.y;
+					} else {
+						y = nBIter->gridPos.x;
+						x = (GRID_WIDTH - 1) - nBIter->gridPos.y;
+					}
+					noteBlocks.at(x).at(y) = *nBIter;
+					noteBlocks.at(x).at(y).gridPos = glm::uvec2(x, y);
 				}
 			}
 		}
 	}
+
+	// Rotates all NoteBlocks in the 8 cells around the center
+	// They progress one cell clockwise if CW == true, counter-clockwise otherwise
+	//void rotateNoteBlocks(glm::uvec2 center, bool CW) {
+	//	nbVec noteBlocksCpy(noteBlocks);
+	//	initNoteBlockVectors(&noteBlocks);
+	//	int x, y;
+	//	for (auto nBColIter = noteBlocksCpy.begin(); nBColIter != noteBlocksCpy.end(); nBColIter++) {
+	//		for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
+	//			if (nBIter->transform != nullptr) {
+	//				// TODO - can shiftblocks themselves be shifted?? (have to have some "override" bool for WASD then)
+	//				x = nBIter->gridPos.x;
+	//				y = nBIter->gridPos.y;
+	//				// TODO
+	//				(*editableNBs).at(x).at(y) = *nBIter;
+	//				(*editableNBs).at(x).at(y).gridPos = glm::uvec2(x, y);
+	//			}
+	//		}
+	//	}
+	//}
 
 	// Cycles a NoteBlock's shape and/or color
 	void cycleNoteBlock(NoteBlock &nB, int dShape, int dColor) {
 		if (nB.transform == nullptr) return;
 		SHAPE s = SHAPE((int(nB.shapeDef->shape) + dShape + shapeDefs.size()) % (shapeDefs.size()));
 		COLOR c = COLOR((int(nB.colorDef->color) + dColor + colorDefs.size()) % (colorDefs.size()));
-		deleteNoteBlock(&nB);
-		createNewNoteBlock(s, c, glm::uvec2(0, 0));
+		deleteNoteBlock(&noteBlocks, &nB);
+		createNewNoteBlock(&noteBlocks, s, c, glm::uvec2(0, 0));
 	}
 
 	// Updates the position of all NoteBlocks based on their gridPos
 	void updateNoteBlockPositions() {
-		for (auto nBColIter = noteBlocks.begin(); nBColIter != noteBlocks.end(); nBColIter++) {
+		updateNoteBlockPositions(true);
+		updateNoteBlockPositions(false);
+	}
+	void updateNoteBlockPositions(bool targetNBs) {
+		nbVec nBs = (targetNBs ? targetNoteBlocks : noteBlocks);
+		for (auto nBColIter = nBs.begin(); nBColIter != nBs.end(); nBColIter++) {
 			for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
 				if (nBIter->transform != nullptr) {
-					if (playingTargetAudio) {
+					if (playingTargetAudio != targetNBs) {
 						nBIter->transform->position = glm::vec3(100.0f, 100.0f, 100.0f);
 					} else {
 						nBIter->transform->position = NOTEBLOCK_ORIGIN +
@@ -290,27 +334,22 @@ struct PlayMode : Mode {
 	}
 
 	// Plays noteBlock samples, or shifts according to shiftblocks
-	void updateNoteBlockSamples() {
-		updateNoteBlockSamples(true);
-		std::cout << "Y - noteBlocks.size(): " << noteBlocks.size() << std::endl;
-		updateNoteBlockSamples(false);
+	void updateNoteBlockSamples(nbVec* nBs_to_update) {
+		//updateNoteBlockSamples(true);
+		updateNoteBlockSamples(nBs_to_update, false);
 	}
-	void updateNoteBlockSamples(bool shiftblock_pass) {
+	void updateNoteBlockSamples(nbVec* nBs_to_update, bool shiftblock_pass) {
 		//assert(&editableNBs == &noteBlocks);
-		std::vector<std::vector<NoteBlock>> noteBlocksCpy;
+		/*nbVec noteBlocksCpy;
 		if (shiftblock_pass) {
-			editableNBs = &std::vector<std::vector<NoteBlock>>(noteBlocks);
-			std::cout << "B - editableNBs->size(): " << editableNBs->size() << std::endl;
+			editableNBs = &nbVec(noteBlocks);
 			initNoteBlockVectors(&noteBlocks);
-			std::cout << "C - editableNBs->size(): " << editableNBs->size() << std::endl;
-			std::cout << "C - noteBlocks.size(): " << noteBlocks.size() << std::endl;
-		}
-		// TODO
-		for (auto nBColIter = noteBlocks.begin(); nBColIter != noteBlocks.end(); nBColIter++) {
+		}*/
+		for (auto nBColIter = nBs_to_update->begin(); nBColIter != nBs_to_update->end(); nBColIter++) {
 			for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
 				if (nBIter->transform == nullptr) continue;
-				if (shiftblock_pass && !nBIter->shapeDef->shiftblock) continue;
-				if (!shiftblock_pass && nBIter->shapeDef->shiftblock) continue;
+				/*if (shiftblock_pass && !nBIter->shapeDef->shiftblock) continue;
+				if (!shiftblock_pass && nBIter->shapeDef->shiftblock) continue;*/
 				// Play a sample if necessary
 				size_t prevFrameTargetNote = getTargetNote(prev_music_time, nBIter->colorDef, nBIter->shapeDef);
 				size_t targetNote = getTargetNote(music_time, nBIter->colorDef, nBIter->shapeDef);
@@ -320,8 +359,7 @@ struct PlayMode : Mode {
 				std::cout << "prevFrameTargetNote: " << prevFrameTargetNote << std::endl;
 				std::cout << "targetNote: " << targetNote << std::endl << std::endl;*/
 
-				if (targetNote > prevFrameTargetNote || prevFrameTargetNote == SIZE_MAX) {
-					std::cout << "Found a targetNote to play" << std::endl;
+				if (targetNote > prevFrameTargetNote /*|| prevFrameTargetNote == SIZE_MAX*/) {
 					playNote(*nBIter, targetNote);
 				}
 
@@ -331,18 +369,16 @@ struct PlayMode : Mode {
 				}*/
 			}
 		}
-		std::cout << "W - noteBlocks.size(): " << noteBlocks.size() << std::endl;
-		if (shiftblock_pass) {
-			noteBlocks = std::vector<std::vector<NoteBlock>>(*editableNBs);
+		/*if (shiftblock_pass) {
+			noteBlocks = nbVec(*editableNBs);
 			editableNBs = &noteBlocks;
-		}
-		std::cout << "X - noteBlocks.size(): " << noteBlocks.size() << std::endl;
+		}*/
 	}
 
 
 	//----- AUDIO UTIL -----
 	size_t getTargetNote(float t, ColorDef *colorDef, ShapeDef *shapeDef) {
-		if (shapeDef->shiftblock) t += SHIFTBLOCK_T_OFFSET;
+		//if (shapeDef->shiftblock) t += SHIFTBLOCK_T_OFFSET;
 		if (t < 0.0) return SIZE_MAX;
 		float fullInterval = colorDef->getFullInterval();
 		int targetInterval = std::max(0, int(t / fullInterval));
@@ -358,6 +394,37 @@ struct PlayMode : Mode {
 		return targetNote;
 	}
 
+	// Stops the current sample of all noteBlocks in a 2D vector
+	void stopAll(nbVec* nBs_to_update, float ramp = 0.0f) {
+		for (auto nBColIter = nBs_to_update->begin(); nBColIter != nBs_to_update->end(); nBColIter++) {
+			for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
+				if (nBIter->currentSample != nullptr) {
+					nBIter->currentSample->stop(ramp);
+				}
+			}
+		}
+	}
+
+	// Sets the volume of all noteBlocks in a 2D vector
+	void setVolume(nbVec* nBs_to_update, float volume, float ramp = 0.0f) {
+		for (auto nBColIter = nBs_to_update->begin(); nBColIter != nBs_to_update->end(); nBColIter++) {
+			for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
+				if (nBIter->currentSample != nullptr) {
+					nBIter->currentSample->set_volume(volume, ramp);
+				}
+			}
+		}
+	}
+
+
+	// Level Management declarations
+	const int TOTAL_LEVELS = 7;
+	int current_lvl = 0;
+	void startLevel(int lvl);
+	bool doNoteBlocksMatchTarget();
+
+
+	// Audio Util declarations
 	void playNote(NoteBlock& nB, size_t targetNote);
 
 
