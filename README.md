@@ -2,15 +2,18 @@
 
 #### Author: Dominic Calkosz
 
+
 ## Design:
 
 This game introduces an instrument called the Pentaton, which uses blocks of different shapes and colors to play notes on a grid.
 Explore how it works in freeplay mode, or jump into a sequence of 7 levels.
 For a customized experience, replace the audio files provided with your own sound font.
 
+
 ## Screen Shot:
 
 ![Screen Shot](screenshot.png)
+
 
 ## How To Play:
 
