@@ -342,6 +342,7 @@ void PlayMode::update(float elapsed, bool *quit) {
 	right.downs = 0;
 	up.downs = 0;
 	down.downs = 0;
+	space.downs = 0;
 }
 
 void PlayMode::draw(glm::uvec2 const &drawable_size) {

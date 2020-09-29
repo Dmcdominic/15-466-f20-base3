@@ -246,8 +246,8 @@ struct PlayMode : Mode {
 			for (auto nBIter = nBColIter->begin(); nBIter != nBColIter->end(); nBIter++) {
 				if (nBIter->transform != nullptr) {
 					// TODO - can shiftblocks themselves be shifted?? (have to have some "override" bool for WASD then)
-					if ((col == -1 || col == nBIter->gridPos.x) &&
-						  (row == -1 || row == nBIter->gridPos.y)) {
+					if ((col < 0 || (unsigned)col == nBIter->gridPos.x) &&
+						  (row < 0 || (unsigned)row == nBIter->gridPos.y)) {
 						x = (int(nBIter->gridPos.x) + dx + GRID_WIDTH) % GRID_WIDTH;
 						y = (int(nBIter->gridPos.y) + dy + GRID_HEIGHT) % GRID_HEIGHT;
 					} else {
